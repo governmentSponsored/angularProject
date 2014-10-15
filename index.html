@@ -5,11 +5,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Angular Application with Bootstrap</title>
 <!-- local store of bootstrap -->
-<link rel="stylesheet" type="text/css" href="/angular/bootstrap/js/bootstrap.min.js" />
+<link rel="stylesheet" type="text/css" href="/angular/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
 <h1>Using Angular will be great, I promise!</h1>
-<p>{{"hello" + " to you kind sir, I can tell you like beer!"}}</p>
+<p>{{"Hello, " + "I can tell you like beer."}}</p>
 
 <!-- 
 refers to the StoreController in app.js 
@@ -19,6 +19,8 @@ the "as store" defines store as an alias to the StoreController
 	<h1> {{store.product.name}} </h1>
 	<h2> ${{store.product.price}} </h2>
 	<p> {{store.product.description}} </p>
+	<button ng-show="store.product.cannotPurchase">Don't Show me!</button>
+	<button class="btn default btn-primary" ng-show="store.product.canPurchase">Show me!</button>
 </div>
 
 <!-- local store of angular -->
