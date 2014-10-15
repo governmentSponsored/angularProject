@@ -12,4 +12,4 @@
 		price: 4.99,
 		description: "Sour, citrus, and inspired by Japan, the land of the rising sun!"
 	}
-}();
+})();

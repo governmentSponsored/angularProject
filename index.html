@@ -8,14 +8,22 @@
 <link rel="stylesheet" type="text/css" href="/angular/bootstrap/js/bootstrap.min.js" />
 </head>
 <body>
+<h1>Using Angular will be great, I promise!</h1>
+<p>{{"hello" + " to you kind sir, I can tell you like beer!"}}</p>
+
+<!-- 
+refers to the StoreController in app.js 
+the "as store" defines store as an alias to the StoreController
+-->
+<div ng-controller="StoreController as store">
+	<h1> {{store.product.name}} </h1>
+	<h2> ${{store.product.price}} </h2>
+	<p> {{store.product.description}} </p>
+</div>
+
 <!-- local store of angular -->
 <script type="text/javascript" src="/angular/angular/angular.min.js"></script>
-
 <!-- where we define dependencies and such related to application -->
 <script type="text/javascript" src="app.js"></script>
-
-
-<h1>Using Angular will be great, I promise!</h1>
-<p>{{"hello" + " to you kind sir"}}</p>
 </body>
 </html>
