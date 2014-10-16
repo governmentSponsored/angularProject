@@ -61,12 +61,8 @@ the "as store" defines store as an alias to the StoreController
 						</blockquote>
 						<div id="inputs" class="all-reviews">
 							<h1><small>Tell us what you think!</small></h1>
-							<select class="form-control" ng-model="review.stars">
-								<option val="1">1 star</option>
-								<option val="2">2 stars</option>
-								<option val="3">3 stars</option>
-								<option val="4">4 stars</option>
-								<option val="5">5 stars</option>
+							<select class="form-control" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" ng-model="review.stars">
+								<option value="">Rate the Product</option>
 							</select>
 							<div class="form-group">
 								<label for="comment">Review: </label>
