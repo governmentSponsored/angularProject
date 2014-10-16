@@ -34,6 +34,18 @@
 					percent50: "risingSun_50.jpg",
 					percent25: "risingSun_25.jpg"
 				}
+			],
+			reviews: [
+				{
+					stars: 4,
+					comment: "Really good job!",
+					author: "thanksforthespam@hotmail.com"
+				},
+				{
+					stars: 1,
+					comment: "Booooooo!",
+					author: "hahayoustink@hotmail.com"
+				}
 			]
 		},
 		{
@@ -48,6 +60,18 @@
 				{
 					full: "silverBullet.jpg",
 					thumb: "silverBullet_thumb.jpg"
+				}
+			],
+			reviews: [
+				{
+					stars: 5,
+					comment: "WOW WOW WOW!",
+					author: "ZOMGtoeverything@hotmail.com"
+				},
+				{
+					stars: 2,
+					comment: "Meh?",
+					author: "whateverdude@hotmail.com"
 				}
 			]
 		},
@@ -67,6 +91,23 @@
 				{
 					percent50: "twoHearted_50.jpg",
 					percent25: "twoHearted_25.jpg"
+				}
+			],
+			reviews: [
+				{
+					stars: 5,
+					comment: "Speachless!",
+					author: "ZOMGtoeverything@hotmail.com"
+				},
+				{
+					stars: 5,
+					comment: "Crying with joy.",
+					author: "5stars4life@hotmail.com"
+				},
+				{
+					stars: 5,
+					comment: "I can die happy now",
+					author: "5stars2you@hotmail.com"
 				}
 			]
 		}			
