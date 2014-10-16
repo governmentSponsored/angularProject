@@ -15,15 +15,16 @@
 refers to the StoreController in app.js 
 the "as store" defines store as an alias to the StoreController
 -->
-<div>
-	<div ng-repeat="product in store.products">
-		<h1> {{product.name}} </h1>
-		<h2> ${{product.price}} </h2>
+<ul>
+	<li class="list-group-item" ng-repeat="product in store.products">
+		<h3> {{product.name}} 
+			<em class="pull-right">${{product.price}}</em>
+		</h3>
 		<p> {{product.description}} </p>
 		<button ng-hide="product.canPurchase">Don't Show me!</button>
 		<button class="btn default btn-primary" ng-show="product.canPurchase">Show me!</button>
-	</div>
-</div>
+	</li>
+</ul>
 
 <!-- local store of angular -->
 <script type="text/javascript" src="/angular/angular/angular.min.js"></script>
