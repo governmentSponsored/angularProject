@@ -23,9 +23,15 @@ the "as store" defines store as an alias to the StoreController
 		</h3>
 		<section ng-init="tab = 1">
 			<ul class="nav nav-pills">
-				<li> <a href ng-click="tab = 1">Description</a></li>
-				<li> <a href ng-click="tab = 2">ABV</a></li>
-				<li> <a href ng-click="tab = 3">Reviews</a></li>
+				<li ng-class="{ active: tab === 1}"> 
+					<a href ng-click="tab = 1">Description</a>
+				</li>
+				<li ng-class="{ active: tab === 2}">  
+					<a href ng-click="tab = 2">ABV</a>
+				</li>
+				<li ng-class="{ active: tab === 3}">  
+					<a href ng-click="tab = 3">Reviews</a>
+				</li>
 			</ul>
 		
 			<div class="panel" ng-show="tab === 1">
