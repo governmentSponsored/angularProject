@@ -6,6 +6,15 @@
 	app.controller('StoreController', function() {
 		this.products = beers;
 	});
+	
+	//using the filter from @jeffjohnson9046 from the percent-filter.js
+	// This filter makes the assumption that the input will be in decimal form (i.e. 17% is 0.17).
+	app.filter('percentage', ['$filter', function ($filter) {
+		return function (input, decimals) {
+			return $filter('number')(input * 100, decimals) + '%';
+		};
+	}]);
+	
 	// /angular/img/
 	var beers = [
 		{
@@ -15,6 +24,7 @@
 			canPurchase: true,
 			cannotPurchase: false,
 			soldOut: false,
+			abv: 0.06,
 			images: [
 				{
 					full: "risingSun.jpg",
@@ -33,6 +43,7 @@
 			canPurchase: true,
 			cannotPurchase: false,
 			soldOut: false,
+			abv: 0.01,
 			images: [
 				{
 					full: "silverBullet.jpg",
@@ -47,6 +58,7 @@
 			canPurchase: true,
 			cannotPurchase: false,
 			soldOut: true,
+			abv: 0.07,
 			images: [
 				{
 					full: "twoHearted.jpg",
