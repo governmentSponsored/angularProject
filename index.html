@@ -21,25 +21,26 @@ the "as store" defines store as an alias to the StoreController
 			<em class="pull-right">{{product.price | currency}}</em>
 			<img ng-src="/angular/img/{{product.images[0].thumb}}" />
 		</h3>
-		<section>
+		<section ng-init="tab = 1">
 			<ul class="nav nav-pills">
 				<li> <a href ng-click="tab = 1">Description</a></li>
 				<li> <a href ng-click="tab = 2">ABV</a></li>
 				<li> <a href ng-click="tab = 3">Reviews</a></li>
 			</ul>
+		
+			<div class="panel" ng-show="tab === 1">
+				<h4>Description</h4>
+				<p> {{product.description}} </p>
+			</div>
+			<div class="panel" ng-show="tab === 2">
+				<h4>Alcohol by Volume (ABV)</h4>
+				<p> {{product.abv | percentage:2}} </p>
+			</div>
+			<div class="panel" ng-show="tab === 3">
+				<h4>Reviews</h4>
+				<blockquote>None yet</blockquote>
+			</div>
 		</section>
-		<div class="panel" ng-show="tab === 1">
-			<h4>Description</h4>
-			<p> {{product.description}} </p>
-		</div>
-		<div class="panel" ng-show="tab === 2">
-			<h4>Alcohol by Volume (ABV)</h4>
-			<p> {{product.abv | percentage:2}} </p>
-		</div>
-		<div class="panel" ng-show="tab === 3">
-			<h4>Reviews</h4>
-			<blockquote>None yet</blockquote>
-		</div>
 	</li>
 </ul>
 
