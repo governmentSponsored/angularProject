@@ -6,6 +6,7 @@
 <title>Angular Application with Bootstrap</title>
 <!-- local store of bootstrap -->
 <link rel="stylesheet" type="text/css" href="/angular/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/angular/style.css" />
 </head>
 <!-- 
 refers to the StoreController in app.js 
@@ -19,8 +20,9 @@ the "as store" defines store as an alias to the StoreController
 	<li class="list-group-item" ng-repeat="product in store.products | orderBy:'price'">
 		<h3> {{product.name}} 
 			<em class="pull-right">{{product.price | currency}}</em>
-			<img class="img-rounded" ng-src="/angular/img/{{product.images[0].thumb}}" />
+			
 		</h3>
+		<img class="img-rounded margin-all-5" ng-src="/angular/img/{{product.images[0].thumb}}" />
 		<section ng-controller="PanelController as panel">
 			<ul class="nav nav-pills">
 				<li ng-class="{ active: panel.isSelected(1)}"> 
@@ -33,47 +35,51 @@ the "as store" defines store as an alias to the StoreController
 					<a href ng-click="panel.selectTab(3)">Reviews</a>
 				</li>
 			</ul>
-		
-			<div class="panel" ng-show="panel.isSelected(1)">
-				<h4>Description</h4>
-				<p> {{product.description}} </p>
-			</div>
-			<div class="panel" ng-show="panel.isSelected(2)">
-				<h4>Alcohol by Volume (ABV)</h4>
-				<p> {{product.abv | percentage:2}} </p>
-			</div>
-			<div class="panel" ng-show="panel.isSelected(3)">
-				<h4>Reviews</h4>
-				<blockquote ng-repeat="review in product.reviews">
-					<b>Stars: </b>{{review.stars}} <br />
-					{{review.comment}} <br />
-					<cite>by: {{review.author}}</cite>
-				</blockquote>
-				
-				<form name="review">
-					<blockquote>
-						<strong>Your Review Preview!</strong> <br />
-						<b>Stars: </b>{{review.stars}}<br />
-						{{review.comment}}
-						<cite class="clearfix" >by: {{review.author}}</cite>
+			<div>
+				<div class="panel" ng-show="panel.isSelected(1)">
+					<h4>Description</h4>
+					<p> {{product.description}} </p>
+				</div>
+				<div class="panel" ng-show="panel.isSelected(2)">
+					<h4>Alcohol by Volume (ABV)</h4>
+					<p> {{product.abv | percentage:2}} </p>
+				</div>
+				<div class="panel" ng-show="panel.isSelected(3)">
+					<h4>Reviews</h4>
+					<blockquote ng-repeat="review in product.reviews">
+						<b>Stars: </b>{{review.stars}} <br />
+						{{review.comment}} <br />
+						<cite>by: {{review.author}}</cite>
 					</blockquote>
-					<select class="form-control" ng-model="review.stars">
-						<option val="1">1 star</option>
-						<option val="2">2 stars</option>
-						<option val="3">3 stars</option>
-						<option val="4">4 stars</option>
-						<option val="5">5 stars</option>
-					</select>
-					<div class="form-group">
-						<label for="comment">Review: </label>
-						<textarea class="form-control" id="comment" ng-model="review.comment"></textarea>
-					</div>
-					<div class="form-group">
-						<label for="author">By: </label>
-						<input class="form-control" id="author" type="email" ng-model="review.author" />
-					</div>
-					<input class="btn btn-default" type="submit" value="Submit"/>
-				</form>
+					
+					<form name="review">
+						<blockquote>
+							<strong>Your Review Preview!</strong> <br />
+							<b>Stars: </b>{{review.stars}}<br />
+							{{review.comment}}
+							<cite class="clearfix" >by: {{review.author}}</cite>
+						</blockquote>
+						<div id="inputs" class="all-reviews">
+							<h1><small>Tell us what you think!</small></h1>
+							<select class="form-control" ng-model="review.stars">
+								<option val="1">1 star</option>
+								<option val="2">2 stars</option>
+								<option val="3">3 stars</option>
+								<option val="4">4 stars</option>
+								<option val="5">5 stars</option>
+							</select>
+							<div class="form-group">
+								<label for="comment">Review: </label>
+								<textarea class="form-control" id="comment" ng-model="review.comment"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="author">By: </label>
+								<input class="form-control" id="author" type="email" ng-model="review.author" />
+							</div>
+							<input class="btn btn-default" type="submit" value="Submit"/>
+						</div>
+					</form>
+				</div>
 			</div>
 		</section>
 	</li>
