@@ -2,6 +2,19 @@
 (function() {
 	var app = angular.module('store',[]);
 	
+	/*
+	This is a custom directive for product title html
+	IMPORTANT: note that *productTitle* will match up to HTML *product-title*
+	this means that dashed in HTML translates to camelCase in JavaScript.
+	*/
+	app.directive('productTitle', function() {
+		//returns a directive definition object (a config object that defines how directive will work)
+		return {
+			restrict: 'E', //define the type of directive. In this case E = Element
+			templateUrl: 'product-title.html'
+		};
+	});
+	
 	//important that StoreController be in caps and that it has Controller included in it
 	app.controller('StoreController', function() {
 		this.products = beers;
@@ -22,6 +35,7 @@
 		};
 	});
 	
+	//adds new reviews and clears the form once review is added
 	app.controller("ReviewController", function() {
 		this.review = {};
 		

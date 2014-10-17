@@ -18,8 +18,12 @@ the "as store" defines store as an alias to the StoreController
 
 <ul class="list-group">
 	<li class="list-group-item" ng-repeat="product in store.products | orderBy:'price'">
+		<!--
+		replacing this with a custom directive...wee!
 		<h3 ng-include="'product-title.html'">			
 		</h3>
+		-->
+		<product-title></product-title>
 		<img class="img-rounded margin-all-5" ng-src="/angular/img/{{product.images[0].thumb}}" />
 		<section ng-controller="PanelController as panel">
 			<ul class="nav nav-pills">
