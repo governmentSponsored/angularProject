@@ -7,6 +7,34 @@
 		this.products = beers;
 	});
 	
+	//This controller makes the tab functionality work
+	app.controller("PanelController", function() {
+		this.tab = 1;
+		
+		//sets the tab value
+		this.selectTab = function(setTab) {
+			this.tab = setTab;
+		};
+		
+		//returns true/false based on whether tab is selected or not
+		this.isSelected = function(checkTab) {
+			return this.tab === checkTab;
+		};
+	});
+	
+	app.controller("ReviewController", function() {
+		this.review = {};
+		
+		//appends review w/date to the corresponding beer
+		this.addReview = function(product) {
+			this.review.createdOn = Date.now();
+			product.reviews.push(this.review);
+			
+			//clears values in the form
+			this.review = {};
+		};
+	});
+	
 	//using the filter from @jeffjohnson9046 from the percent-filter.js
 	// This filter makes the assumption that the input will be in decimal form (i.e. 17% is 0.17).
 	app.filter('percentage', ['$filter', function ($filter) {
@@ -119,27 +147,4 @@
 			]
 		}			
 	];
-	
-	app.controller("PanelController", function() {
-		this.tab = 1;
-		
-		this.selectTab = function(setTab) {
-			this.tab = setTab;
-		};
-		
-		this.isSelected = function(checkTab) {
-			return this.tab === checkTab;
-		};
-	});
-	
-	app.controller("ReviewController", function() {
-		this.review = {};
-		
-		this.addReview = function(product) {
-			this.review.createdOn = Date.now();
-			product.reviews.push(this.review);
-			//clears values in the form
-			this.review = {};
-		};
-	});
 })();
