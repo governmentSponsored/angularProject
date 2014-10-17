@@ -18,9 +18,7 @@ the "as store" defines store as an alias to the StoreController
 
 <ul class="list-group">
 	<li class="list-group-item" ng-repeat="product in store.products | orderBy:'price'">
-		<h3> {{product.name}} 
-			<em class="pull-right">{{product.price | currency}}</em>
-			
+		<h3 ng-include="'product-title.html'">			
 		</h3>
 		<img class="img-rounded margin-all-5" ng-src="/angular/img/{{product.images[0].thumb}}" />
 		<section ng-controller="PanelController as panel">
@@ -49,7 +47,7 @@ the "as store" defines store as an alias to the StoreController
 					<blockquote ng-repeat="review in product.reviews">
 						<b>Stars: </b>{{review.stars}} <br />
 						{{review.comment}} <br />
-						<cite>by: {{review.author}}</cite>
+						<cite>by: {{review.author}} on {{review.createdOn | date}}</cite>
 					</blockquote>
 					<!-- the product that gets passed into the ng-submit function is defined in the ng-repeat in the first li -->
 					<form name="reviewForm" ng-controller="ReviewController as reviewCtrl" 

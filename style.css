@@ -8,3 +8,12 @@
 	box-shadow: 2px 2px 2px #888888;
 	padding: 5px;
 }
+
+/* helps highlight valid vs. invalid fields */
+.ng-invalid.ng-dirty {
+	border-color: #FA787E;
+}
+
+.ng-valid.ng-dirty {
+	border-color: #78FA89;
+}

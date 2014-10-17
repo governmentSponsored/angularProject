@@ -39,12 +39,14 @@
 				{
 					stars: 4,
 					comment: "Really good job!",
-					author: "thanksforthespam@hotmail.com"
+					author: "thanksforthespam@hotmail.com",
+					createdOn: 1413552886810
 				},
 				{
 					stars: 1,
 					comment: "Booooooo!",
-					author: "hahayoustink@hotmail.com"
+					author: "hahayoustink@hotmail.com",
+					createdOn: 1413552886810
 				}
 			]
 		},
@@ -59,19 +61,21 @@
 			images: [
 				{
 					full: "silverBullet.jpg",
-					thumb: "silverBullet_thumb.jpg"
+					thumb: "silverBullet_thumb.jpg",
 				}
 			],
 			reviews: [
 				{
 					stars: 5,
 					comment: "WOW WOW WOW!",
-					author: "ZOMGtoeverything@hotmail.com"
+					author: "ZOMGtoeverything@hotmail.com",
+					createdOn: 1413552886810
 				},
 				{
 					stars: 2,
 					comment: "Meh?",
-					author: "whateverdude@hotmail.com"
+					author: "whateverdude@hotmail.com",
+					createdOn: 1413552886810
 				}
 			]
 		},
@@ -97,17 +101,20 @@
 				{
 					stars: 5,
 					comment: "Speachless!",
-					author: "ZOMGtoeverything@hotmail.com"
+					author: "ZOMGtoeverything@hotmail.com",
+					createdOn: 1413552886810
 				},
 				{
 					stars: 5,
 					comment: "Crying with joy.",
-					author: "5stars4life@hotmail.com"
+					author: "5stars4life@hotmail.com",
+					createdOn: 1413552886810
 				},
 				{
 					stars: 5,
 					comment: "I can die happy now",
-					author: "5stars2you@hotmail.com"
+					author: "5stars2you@hotmail.com",
+					createdOn: 1413552886810
 				}
 			]
 		}			
@@ -129,6 +136,7 @@
 		this.review = {};
 		
 		this.addReview = function(product) {
+			this.review.createdOn = Date.now();
 			product.reviews.push(this.review);
 			//clears values in the form
 			this.review = {};
