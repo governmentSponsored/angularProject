@@ -127,5 +127,11 @@
 	
 	app.controller("ReviewController", function() {
 		this.review = {};
+		
+		this.addReview = function(product) {
+			product.reviews.push(this.review);
+			//clears values in the form
+			this.review = {};
+		};
 	});
 })();

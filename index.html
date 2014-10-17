@@ -51,8 +51,8 @@ the "as store" defines store as an alias to the StoreController
 						{{review.comment}} <br />
 						<cite>by: {{review.author}}</cite>
 					</blockquote>
-					
-					<form name="review" ng-controller="ReviewController as reviewCtrl">
+					<!-- the product that gets passed into the ng-submit function is defined in the ng-repeat in the first li -->
+					<form name="review" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)">
 						<blockquote>
 							<strong>Your Review Preview!</strong> <br />
 							<b>Stars: </b>{{reviewCtrl.review.stars}}<br />
