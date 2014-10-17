@@ -124,4 +124,8 @@
 			return this.tab === checkTab;
 		};
 	});
+	
+	app.controller("ReviewController", function() {
+		this.review = {};
+	});
 })();

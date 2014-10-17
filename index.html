@@ -52,25 +52,25 @@ the "as store" defines store as an alias to the StoreController
 						<cite>by: {{review.author}}</cite>
 					</blockquote>
 					
-					<form name="review">
+					<form name="review" ng-controller="ReviewController as reviewCtrl">
 						<blockquote>
 							<strong>Your Review Preview!</strong> <br />
-							<b>Stars: </b>{{review.stars}}<br />
-							{{review.comment}}
-							<cite class="clearfix" >by: {{review.author}}</cite>
+							<b>Stars: </b>{{reviewCtrl.review.stars}}<br />
+							{{reviewCtrl.review.comment}}
+							<cite class="clearfix" >by: {{reviewCtrl.review.author}}</cite>
 						</blockquote>
 						<div id="inputs" class="all-reviews">
 							<h1><small>Tell us what you think!</small></h1>
-							<select class="form-control" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" ng-model="review.stars">
+							<select class="form-control" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" ng-model="reviewCtrl.review.stars">
 								<option value="">Rate the Product</option>
 							</select>
 							<div class="form-group">
 								<label for="comment">Review: </label>
-								<textarea class="form-control" id="comment" ng-model="review.comment"></textarea>
+								<textarea class="form-control" id="comment" ng-model="reviewCtrl.review.comment"></textarea>
 							</div>
 							<div class="form-group">
 								<label for="author">By: </label>
-								<input class="form-control" id="author" type="email" ng-model="review.author" />
+								<input class="form-control" id="author" type="email" ng-model="reviewCtrl.review.author" />
 							</div>
 							<input class="btn btn-default" type="submit" value="Submit"/>
 						</div>
