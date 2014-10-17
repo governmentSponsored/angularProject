@@ -1,0 +1,25 @@
+<section>
+	<ul class="nav nav-pills">
+		<!-- add active class if selected -->
+		<li ng-class="{ active: panel.isSelected(1)}"> 
+			<a href ng-click="panel.selectTab(1)">Description</a>
+		</li>
+		<li ng-class="{ active: panel.isSelected(2)}">  
+			<a href ng-click="panel.selectTab(2)">ABV</a>
+		</li>
+		<li ng-class="{ active: panel.isSelected(3)}">  
+			<a href ng-click="panel.selectTab(3)">Reviews</a>
+		</li>
+	</ul>
+	<div>
+		<!-- show panel if selected -->
+		<product-description class="panel" ng-show="panel.isSelected(1)">
+		</product-description>
+		
+		<product-abv class="panel" ng-show="panel.isSelected(2)">
+		</product-abv>
+		
+		<product-reviews class="panel" ng-show="panel.isSelected(3)">
+		</product-reviews>
+	</div>
+</section>

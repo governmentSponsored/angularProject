@@ -1,0 +1,44 @@
+<h4>Reviews</h4>
+<!-- repeat thru all the reviews -->
+<blockquote ng-repeat="review in product.reviews">
+	<b>Stars: </b>{{review.stars}} <br />
+	{{review.comment}} <br />
+	<cite>by: {{review.author}} on {{review.createdOn | date}}</cite>
+</blockquote>
+<!-- 
+the product that gets passed into the ng-submit function is defined in the ng-repeat in the first li
+we're also making sure form is valid before submittion with the reviewForm.$valid
+before calling the addReview() function
+-->
+<form name="reviewForm" ng-controller="ReviewController as reviewCtrl" 
+	ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+	<blockquote>
+		<!-- here's some two-way data binding -->
+		<strong>Your Review Preview!</strong> <br />
+		<b>Stars: </b>{{reviewCtrl.review.stars}}<br />
+		{{reviewCtrl.review.comment}}
+		<cite class="clearfix" >by: {{reviewCtrl.review.author}}</cite>
+	</blockquote>
+	<div id="inputs" class="all-reviews">
+		<h1><small>Tell us what you think!</small></h1>
+		<!-- 
+		the ng-model helps tie in that two-way binding
+		required needed for fields to be validated
+		validation based off of input type
+		-->
+		<select class="form-control" ng-options="stars for stars in [5,4,3,2,1]" 
+				title="Stars" ng-model="reviewCtrl.review.stars" required>
+			<option value="">Rate the Product</option>
+		</select>
+		<div class="form-group">
+			<label for="comment">Review: </label>
+			<textarea class="form-control" id="comment" ng-model="reviewCtrl.review.comment" name="comment" required></textarea>
+		</div>
+		<div class="form-group">
+			<label for="author">By: </label>
+			<input class="form-control" id="author" name="author" type="email" ng-model="reviewCtrl.review.author" required />
+		</div>
+		<div id="formValidationMsg">review is {{reviewForm.$valid}}</div>
+		<input class="btn btn-default" type="submit" value="Submit"/>
+	</div>
+</form>

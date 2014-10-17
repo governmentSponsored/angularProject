@@ -25,64 +25,9 @@ the "as store" defines store as an alias to the StoreController
 		-->
 		<product-title></product-title>
 		<img class="img-rounded margin-all-5" ng-src="/angular/img/{{product.images[0].thumb}}" />
-		<section ng-controller="PanelController as panel">
-			<ul class="nav nav-pills">
-				<li ng-class="{ active: panel.isSelected(1)}"> 
-					<a href ng-click="panel.selectTab(1)">Description</a>
-				</li>
-				<li ng-class="{ active: panel.isSelected(2)}">  
-					<a href ng-click="panel.selectTab(2)">ABV</a>
-				</li>
-				<li ng-class="{ active: panel.isSelected(3)}">  
-					<a href ng-click="panel.selectTab(3)">Reviews</a>
-				</li>
-			</ul>
-			<div>
-				<div class="panel" ng-show="panel.isSelected(1)">
-					<h4>Description</h4>
-					<p> {{product.description}} </p>
-				</div>
-				<div class="panel" ng-show="panel.isSelected(2)">
-					<h4>Alcohol by Volume (ABV)</h4>
-					<p> {{product.abv | percentage:2}} </p>
-				</div>
-				<div class="panel" ng-show="panel.isSelected(3)">
-					<h4>Reviews</h4>
-					<blockquote ng-repeat="review in product.reviews">
-						<b>Stars: </b>{{review.stars}} <br />
-						{{review.comment}} <br />
-						<cite>by: {{review.author}} on {{review.createdOn | date}}</cite>
-					</blockquote>
-					<!-- the product that gets passed into the ng-submit function is defined in the ng-repeat in the first li -->
-					<form name="reviewForm" ng-controller="ReviewController as reviewCtrl" 
-						ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
-						<blockquote>
-							<strong>Your Review Preview!</strong> <br />
-							<b>Stars: </b>{{reviewCtrl.review.stars}}<br />
-							{{reviewCtrl.review.comment}}
-							<cite class="clearfix" >by: {{reviewCtrl.review.author}}</cite>
-						</blockquote>
-						<div id="inputs" class="all-reviews">
-							<h1><small>Tell us what you think!</small></h1>
-							<select class="form-control" ng-options="stars for stars in [5,4,3,2,1]" 
-									title="Stars" ng-model="reviewCtrl.review.stars" required>
-								<option value="">Rate the Product</option>
-							</select>
-							<div class="form-group">
-								<label for="comment">Review: </label>
-								<textarea class="form-control" id="comment" ng-model="reviewCtrl.review.comment" name="comment" required></textarea>
-							</div>
-							<div class="form-group">
-								<label for="author">By: </label>
-								<input class="form-control" id="author" name="author" type="email" ng-model="reviewCtrl.review.author" required />
-							</div>
-							<div id="formValidationMsg">review is {{reviewForm.$valid}}</div>
-							<input class="btn btn-default" type="submit" value="Submit"/>
-						</div>
-					</form>
-				</div>
-			</div>
-		</section>
+		<product-panels>
+		</product-panels>
+		
 	</li>
 </ul>
 
