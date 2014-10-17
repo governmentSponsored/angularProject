@@ -1,101 +1,8 @@
 //wrap the whole function in closure
 (function() {
-	var app = angular.module('store',[]);
-	
-	/*
-	This is a custom directive for product title html
-	IMPORTANT: note that *productTitle* will match up to HTML *product-title*
-	this means that dashed in HTML translates to camelCase in JavaScript.
-	*/
-	app.directive('productTitle', function() {
-		//returns a directive definition object (a config object that defines how directive will work)
-		return {
-			restrict: 'E', //define the type of directive. In this case E = Element
-			templateUrl: 'product-title.html'
-		};
-	});
-	
-	app.directive('productPanels', function() {
-		return {
-			restrict: 'E',
-			templateUrl: 'product-panels.html',
-			controller: function() { //bring in controller functionality from below
-				this.tab = 1;
-		
-				//sets the tab value
-				this.selectTab = function(setTab) {
-					this.tab = setTab;
-				};
-				
-				//returns true/false based on whether tab is selected or not
-				this.isSelected = function(checkTab) {
-					return this.tab === checkTab;
-				};
-			},
-			controllerAs: 'panel' //specify alias of controller
-		};
-	});
-	
-	//description panel
-	app.directive('productDescription', function() {
-		return {
-			restrict: 'E',
-			templateUrl: 'product-description.html'
-		};
-	});
-	
-	//abv panel
-	app.directive('productAbv', function() {
-		return {
-			restrict: 'E',
-			templateUrl: 'product-abv.html'
-		};
-	});
-	
-	//reviews panel
-	app.directive('productReviews', function() {
-		return {
-			restrict: 'E',
-			templateUrl: 'product-reviews.html'
-		};
-	});
-	
-	//important that StoreController be in caps and that it has Controller included in it
-	app.controller('StoreController', function() {
-		this.products = beers;
-	});
-	
-	//This functionality was moved to the productPanels directive controller attribute
-	/*
-	//This controller makes the tab functionality work
-	app.controller("PanelController", function() {
-		this.tab = 1;
-		
-		//sets the tab value
-		this.selectTab = function(setTab) {
-			this.tab = setTab;
-		};
-		
-		//returns true/false based on whether tab is selected or not
-		this.isSelected = function(checkTab) {
-			return this.tab === checkTab;
-		};
-	});
-	*/
-	
-	//adds new reviews and clears the form once review is added
-	app.controller("ReviewController", function() {
-		this.review = {};
-		
-		//appends review w/date to the corresponding beer
-		this.addReview = function(product) {
-			this.review.createdOn = Date.now();
-			product.reviews.push(this.review);
-			
-			//clears values in the form
-			this.review = {};
-		};
-	});
+	//now that we've removed product related functionality, we need to tell this app variable 
+	//that it has a dependency in store-products
+	var app = angular.module('store',['products']);
 	
 	//using the filter from @jeffjohnson9046 from the percent-filter.js
 	// This filter makes the assumption that the input will be in decimal form (i.e. 17% is 0.17).
@@ -104,6 +11,11 @@
 			return $filter('number')(input * 100, decimals) + '%';
 		};
 	}]);
+	
+	//important that StoreController be in caps and that it has Controller included in it
+	app.controller('StoreController', function() {
+		this.products = beers;
+	});
 	
 	// /angular/img/
 	var beers = [
