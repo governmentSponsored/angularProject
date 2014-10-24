@@ -17,3 +17,7 @@
 .ng-valid.ng-dirty {
 	border-color: #78FA89;
 }
+
+.hidden {
+	display: none;
+}
