@@ -5,8 +5,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Angular Application with Bootstrap</title>
 <!-- local store of bootstrap -->
-<link rel="stylesheet" type="text/css" href="/angular/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/angular/style.css" />
+<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="./style.css" />
 </head>
 <!-- 
 refers to the StoreController in app.js 
@@ -24,7 +24,7 @@ the "as store" defines store as an alias to the StoreController
 			</h3>
 			-->
 			<product-title></product-title>
-			<img class="img-rounded margin-all-5" ng-src="/angular/img/{{product.images[0].thumb}}" />
+			<img class="img-rounded margin-all-5" ng-src="/gitProject/img/{{product.images[0].thumb}}" />
 			<product-panels>
 			</product-panels>
 			
@@ -32,7 +32,7 @@ the "as store" defines store as an alias to the StoreController
 	</ul>
 
 	<!-- local store of angular -->
-	<script type="text/javascript" src="/angular/angular/angular.min.js"></script>
+	<script type="text/javascript" src="./angular/angular.min.js"></script>
 	
 	<!-- where we define dependencies and such related to application -->
 	<script type="text/javascript" src="app.js"></script>
