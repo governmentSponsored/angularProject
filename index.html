@@ -6,7 +6,12 @@
 <title>Angular Application with Bootstrap</title>
 <!-- local store of bootstrap -->
 <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css" />
+<!-- my css style sheet -->
 <link rel="stylesheet" type="text/css" href="./style.css" />
+<!-- jquery -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<!-- parse -->
+<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.1.min.js"></script>
 </head>
 <!-- 
 refers to the StoreController in app.js 
@@ -31,11 +36,22 @@ the "as store" defines store as an alias to the StoreController
 		</li>
 	</ul>
 
+	<div class="error hidden">
+		<h3>Parse did not save your stuff :(</h3>
+	</div>
+
+	<div class="success hidden">
+		<h3>Parse saved your stuff!</h3>
+	</div>
+
 	<!-- local store of angular -->
 	<script type="text/javascript" src="./angular/angular.min.js"></script>
 	
 	<!-- where we define dependencies and such related to application -->
 	<script type="text/javascript" src="app.js"></script>
 	<script type="text/javascript" src="products.js"></script>
+
+	<!-- parse stuff -->
+	<script type="text/javascript" src="parse-app.js"></script>
 </body>
 </html>
