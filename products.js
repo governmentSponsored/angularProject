@@ -81,12 +81,28 @@
 	//adds new reviews and clears the form once review is added
 	app.controller("ReviewController", function() {
 		this.review = {};
+		var Review = Parse.Object.extend("Review");
 		
 		//appends review w/date to the corresponding beer
 		this.addReview = function(product) {
 			this.review.createdOn = Date.now();
 			product.reviews.push(this.review);
 			
+		    var reviewObject = new Review();
+		      reviewObject.save({
+		      	author: this.review.author,
+		      	stars: this.review.stars,
+		      	comment: this.review.comment,
+		      	beer: product.name
+		      }, {
+		      success: function(object) {
+		        alert('yep!')
+		      },
+		      error: function(model, error) {
+		        alert('nope!')
+		      }
+		    }); 
+			//alert(this.review.author + this.review.comment + this.review.stars );
 			//clears values in the form
 			this.review = {};
 		};

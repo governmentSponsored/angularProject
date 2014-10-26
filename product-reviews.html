@@ -3,7 +3,7 @@
 <blockquote ng-repeat="review in product.reviews">
 	<b>Stars: </b>{{review.stars}} <br />
 	{{review.comment}} <br />
-	<cite>by: {{review.author}} on {{review.createdOn | date}}</cite>
+	<cite>by: {{review.author}} on {{review.createdOn | date}} for {{product.name}} </cite>
 </blockquote>
 <!-- 
 the product that gets passed into the ng-submit function is defined in the ng-repeat in the first li
@@ -39,6 +39,7 @@ before calling the addReview() function
 			<input class="form-control" id="author" name="author" type="email" ng-model="reviewCtrl.review.author" required />
 		</div>
 		<div id="formValidationMsg">review is {{reviewForm.$valid}}</div>
+		<input type="hidden" class="beerName" name="beerName" value={{product.name}} id="beerName" ng-model="reviewCtrl.review.beerName" />
 		<input class="btn btn-default" type="submit" value="Submit"/>
 	</div>
 </form>
