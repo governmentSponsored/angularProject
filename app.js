@@ -17,6 +17,46 @@
 		this.products = beers;
 	});
 	
+	app.controller('BrewReviewController', function($scope, beerFactory) {
+		$scope.items = [];
+		$scope.getAllReviews = function() {
+			beerFactory.getBrewReviews()
+				.then(function(data) {
+					//$scope.items = data;
+					alert(data);
+					console.log(data);
+				}, function(data) {
+					alert(data);
+				})
+		}
+	});
+	
+	//going to try the factory method of getting the ajax request to parse to load correctly and do stuff like ng-repeats the way we want it to
+	//this will utilize $q which is angular's promise method
+	app.factory('beerFactory', function($http, $q) {
+		var service = {};
+		var brewData = [];
+		
+		var getBrewReviews = function() {
+			brewReviews();
+			var deferred = $q.defer();
+			
+			$http({method : 'GET',url : 'https://api.parse.com/1/classes/Review', headers: { 'X-Parse-Application-Id':'WfjtyO2ov01ie5KPiSbOaAvOzBpessMB8iervPEi', 'X-Parse-REST-API-Key':'Gc8NJ6LtoyZ7JBXbT6GYKUABWcXFIltFti7qxhqm'}})
+				.success(function(data, status) {
+					deferred.resolve(data);
+					console.log('promise resolved successfully');
+				})
+				.error(function(data, status) {
+					deferred.reject('There was an error');
+					console.log('promise resolved successfully');
+				})
+				
+			return deferred.promise;
+		}
+		
+		return service;
+	});
+	
 	// /angular/img/
 	var beers = [
 		{

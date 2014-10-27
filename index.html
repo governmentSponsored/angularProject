@@ -17,10 +17,10 @@
 refers to the StoreController in app.js 
 the "as store" defines store as an alias to the StoreController
 -->
-<body ng-controller="StoreController as store">
+<body>
 	<h1>Angular + Parse Beer app!</h1>
 
-	<ul class="list-group">
+	<ul class="list-group" ng-controller="StoreController as store">
 		<li class="list-group-item" ng-repeat="product in store.products | orderBy:'price'">
 			<!--
 			replacing this with a custom directive...wee!
@@ -31,10 +31,15 @@ the "as store" defines store as an alias to the StoreController
 			<img class="img-rounded margin-all-5" ng-src="./img/{{product.images[0].thumb}}" />
 			<product-panels>
 			</product-panels>
-			
 		</li>
 	</ul>
-
+		<ul class="list-group" ng-controller="BrewReviewController as brewReviewCtrl" ng-init="items = brewReviewCtrl.getAllReviews()">
+			<li class="list-group-item" ng-repeat="item in items">
+				hello
+			</li>
+		</ul>			
+	</form>
+	
 	<div class="error hidden">
 		<h3>Parse did not save your stuff :(</h3>
 	</div>
