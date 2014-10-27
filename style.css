@@ -21,3 +21,10 @@
 .hidden {
 	display: none;
 }
+
+.list-group-item {
+	width: 30%;
+	float: left;
+	margin-left: 10px;
+	border-radius: 5px;
+}

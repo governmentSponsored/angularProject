@@ -18,8 +18,7 @@ refers to the StoreController in app.js
 the "as store" defines store as an alias to the StoreController
 -->
 <body ng-controller="StoreController as store">
-	<h1>Using Angular will be great, I promise!</h1>
-	<p>{{"Hello, " + "I can tell you like beer."}}</p>
+	<h1>Angular + Parse Beer app!</h1>
 
 	<ul class="list-group">
 		<li class="list-group-item" ng-repeat="product in store.products | orderBy:'price'">
@@ -35,9 +34,7 @@ the "as store" defines store as an alias to the StoreController
 			
 		</li>
 	</ul>
-	<!--div id="parseStuff">
-		<button ></button>
-	</div-->
+
 	<div class="error hidden">
 		<h3>Parse did not save your stuff :(</h3>
 	</div>
