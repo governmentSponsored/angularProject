@@ -33,12 +33,36 @@ the "as store" defines store as an alias to the StoreController
 			</product-panels>
 		</li>
 	</ul>
-		<ul class="list-group" ng-controller="BrewReviewController as brewReviewCtrl" ng-init="items = brewReviewCtrl.getAllReviews()">
-			<li class="list-group-item" ng-repeat="item in items">
-				hello
-			</li>
-		</ul>			
-	</form>
+	
+	<!-- factory method, so far not so good
+	<ul class="list-group" ng-controller="BrewReviewController as brewReviewCtrl" ng-init="brews = brewReviewCtrl.getAllReviews()">
+		<li class="list-group-item">
+			{{brews}}
+		</li>
+	</ul -->
+	<ul class="list-group" ng-controller="BrewReviewController">
+		<li class="list-group-item">
+			Enter a number:
+			<input type="number" ng-model="numero" />
+			<button ng-click="doubleWord()">Double Number</button>
+			 
+			<div ng-repeat="a in response">Answer: {{a}}</div>
+		</li>
+		<li class="list-group-item">
+			Click the button:
+			<button ng-init="callParseData('Two Hearted')">Parse Data Number</button>
+			
+			<div ng-repeat="brew in parseData">hello {{brew.author}}</div>
+		</li>
+	</ul>
+	
+	<!-- original method, won't load until too late so it's not very useful. Just keep it around to verify that the previous calls don't break it
+	<ul class="list-group" ng-controller="BrewReviewOriginalController as brewReviewOriginalCtrl" ng-init="items = brewReviewOriginalCtrl.getBrewReviews()">
+		<li class="list-group-item" ng-repeat="item in items">
+			{{item[0].author}}
+		</li>
+	</ul>	
+	-->
 	
 	<div class="error hidden">
 		<h3>Parse did not save your stuff :(</h3>

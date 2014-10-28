@@ -1,10 +1,12 @@
 <h4>Reviews</h4>
 <!-- repeat thru all the reviews -->
-<blockquote ng-repeat="review in product.reviews">
+<div ng-controller="BrewReviewController" ng-init="callParseData(product.name)">
+<blockquote ng-repeat="review in parseData">
 	<b>Stars: </b>{{review.stars}} <br />
 	{{review.comment}} <br />
 	<cite>by: {{review.author}} on {{review.createdOn | date}} for {{product.name}} </cite>
 </blockquote>
+</div>
 <!-- 
 the product that gets passed into the ng-submit function is defined in the ng-repeat in the first li
 we're also making sure form is valid before submittion with the reviewForm.$valid

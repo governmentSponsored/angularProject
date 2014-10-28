@@ -17,47 +17,76 @@
 		this.products = beers;
 	});
 	
-	app.controller('BrewReviewController', function($scope, beerFactory) {
-		$scope.items = [];
-		$scope.getAllReviews = function() {
-			beerFactory.getBrewReviews()
-				.then(function(data) {
-					//$scope.items = data;
-					alert(data);
-					console.log(data);
-				}, function(data) {
-					alert(data);
-				})
+	//service method instead of factory. seems to be more straightforward.
+	app.service('BrewReviewService', function($http, $q){
+		 
+		this.message = function(num) {
+			return [num, num* num];
 		}
-	});
-	
-	//going to try the factory method of getting the ajax request to parse to load correctly and do stuff like ng-repeats the way we want it to
-	//this will utilize $q which is angular's promise method
-	app.factory('beerFactory', function($http, $q) {
-		var service = {};
-		var brewData = [];
-		
-		var getBrewReviews = function() {
-			brewReviews();
+		this.brewReviewFromParse = function(beerType) {
+			console.log('hello! brewReviewFromParse called');
 			var deferred = $q.defer();
-			
-			$http({method : 'GET',url : 'https://api.parse.com/1/classes/Review', headers: { 'X-Parse-Application-Id':'WfjtyO2ov01ie5KPiSbOaAvOzBpessMB8iervPEi', 'X-Parse-REST-API-Key':'Gc8NJ6LtoyZ7JBXbT6GYKUABWcXFIltFti7qxhqm'}})
+			var encoded = encodeURIComponent('where={"beer":"'+ beerType +'"}');
+			var baseUrl = 'https://api.parse.com/1/classes/Review?';
+			var fullUrl = baseUrl + encoded;
+			$http({method : 'GET',
+				   url : fullUrl, 
+				   headers: { 'X-Parse-Application-Id':'WfjtyO2ov01ie5KPiSbOaAvOzBpessMB8iervPEi', 'X-Parse-REST-API-Key':'Gc8NJ6LtoyZ7JBXbT6GYKUABWcXFIltFti7qxhqm'}
+				 })
 				.success(function(data, status) {
 					deferred.resolve(data);
 					console.log('promise resolved successfully');
+					console.log(data);
 				})
 				.error(function(data, status) {
 					deferred.reject('There was an error');
-					console.log('promise resolved successfully');
+					console.log('promise resolved unsuccessfully');
 				})
 				
 			return deferred.promise;
 		}
-		
-		return service;
+	 
 	});
+	 
+	app.controller('BrewReviewController', function($scope, BrewReviewService) {
+		$scope.parseData = [];
+		
+		$scope.doubleWord = function() {
+			$scope.response = BrewReviewService.message($scope.numero);
+		}
+		
+		$scope.callParseData = function(beerType) {
+			console.log('hello! callParseData called');
+			BrewReviewService.brewReviewFromParse(beerType)
+							 .then(function(data) {
+								console.log('hello! then called');
+								$scope.parseData = data.results;
+								console.log($scope.parseData);
+							 }, function(data) {
+								console.log('hello! the function after then called');
+								alert(data);
+							 })
+		}
+		
+	});
+
+	/*app.controller('BrewReviewOriginalController', function($scope, $http) {
+			$scope.items = [];
+			this.getBrewReviews = function() {
+				$http({method : 'GET',
+					   url : fullUrl, 
+					   headers: { 'X-Parse-Application-Id':'WfjtyO2ov01ie5KPiSbOaAvOzBpessMB8iervPEi', 
+					   'X-Parse-REST-API-Key':'Gc8NJ6LtoyZ7JBXbT6GYKUABWcXFIltFti7qxhqm'}
+					   })
+					.success(function(data, status) {
+						$scope.items = data;
+					})
+					.error(function(data, status) {
+						console.log("Error");
+					});
+			};
+		});*/
 	
-	// /angular/img/
 	var beers = [
 		{
 			name: "Rising Sun",
