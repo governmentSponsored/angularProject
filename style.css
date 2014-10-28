@@ -28,3 +28,6 @@
 	margin-left: 10px;
 	border-radius: 5px;
 }
+cite {
+	word-wrap: break-word;
+}
