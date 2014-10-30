@@ -24,23 +24,20 @@
 			return [num, num* num];
 		}
 		this.brewReviewFromParse = function(beerType) {
-			console.log('hello! brewReviewFromParse called');
 			var deferred = $q.defer();
 			var encoded = encodeURIComponent('where={"beer":"'+ beerType +'"}');
 			var baseUrl = 'https://api.parse.com/1/classes/Review?';
 			var fullUrl = baseUrl + encoded;
+			
 			$http({method : 'GET',
 				   url : fullUrl, 
 				   headers: { 'X-Parse-Application-Id':'WfjtyO2ov01ie5KPiSbOaAvOzBpessMB8iervPEi', 'X-Parse-REST-API-Key':'Gc8NJ6LtoyZ7JBXbT6GYKUABWcXFIltFti7qxhqm'}
 				 })
 				.success(function(data, status) {
 					deferred.resolve(data);
-					console.log('promise resolved successfully');
-					console.log(data);
 				})
 				.error(function(data, status) {
 					deferred.reject('There was an error');
-					console.log('promise resolved unsuccessfully');
 				})
 				
 			return deferred.promise;
@@ -56,36 +53,15 @@
 		}
 		
 		$scope.callParseData = function(beerType) {
-			console.log('hello! callParseData called');
 			BrewReviewService.brewReviewFromParse(beerType)
 							 .then(function(data) {
-								console.log('hello! then called');
 								$scope.parseData = data.results;
-								console.log($scope.parseData);
 							 }, function(data) {
-								console.log('hello! the function after then called');
 								alert(data);
 							 })
 		}
 		
 	});
-
-	/*app.controller('BrewReviewOriginalController', function($scope, $http) {
-			$scope.items = [];
-			this.getBrewReviews = function() {
-				$http({method : 'GET',
-					   url : fullUrl, 
-					   headers: { 'X-Parse-Application-Id':'WfjtyO2ov01ie5KPiSbOaAvOzBpessMB8iervPEi', 
-					   'X-Parse-REST-API-Key':'Gc8NJ6LtoyZ7JBXbT6GYKUABWcXFIltFti7qxhqm'}
-					   })
-					.success(function(data, status) {
-						$scope.items = data;
-					})
-					.error(function(data, status) {
-						console.log("Error");
-					});
-			};
-		});*/
 	
 	var beers = [
 		{
