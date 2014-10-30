@@ -1,12 +1,12 @@
 <h4>Reviews</h4>
-<!-- repeat thru all the reviews -->
+<!-- repeat through all the reviews -->
 <div ng-controller="BrewReviewController" ng-init="callParseData(product.name)">
-<blockquote class="bq1" ng-repeat="review in parseData">
-	<div class="rating{{review.stars}} rating"><br />
+<blockquote class="bq1" id="{{product.name}}" ng-repeat="review in parseData">
+	<div class="reviewStars rating{{review.stars}} rating"><br />
 	</div>
-	<p>{{review.comment}}</p>
-	<p class="after"><a>{{review.author}}</a>
-	<br />on {{review.createdAt | date}}</p>
+	<p class="reviewComment">{{review.comment}}</p>
+	<p class="after"><a class="reviewAuthor">{{review.author}}</a></p>
+	<p>on <span class="reviewDate">{{review.createdAt | date}}</span></p>
 </blockquote>
 </div>
 <!-- 
