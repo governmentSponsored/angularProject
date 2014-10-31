@@ -11,14 +11,14 @@
 		//returns a directive definition object (a config object that defines how directive will work)
 		return {
 			restrict: 'E', //define the type of directive. In this case E = Element
-			templateUrl: 'product-title.html'
+			templateUrl: './html/product-title.html'
 		};
 	});
 	
 	app.directive('productPanels', function() {
 		return {
 			restrict: 'E',
-			templateUrl: 'product-panels.html',
+			templateUrl: './html/product-panels.html',
 			controller: function() { //bring in controller functionality from below
 				this.tab = 1;
 		
@@ -40,7 +40,7 @@
 	app.directive('productDescription', function() {
 		return {
 			restrict: 'E',
-			templateUrl: 'product-description.html'
+			templateUrl: './html/product-description.html'
 		};
 	});
 	
@@ -48,7 +48,7 @@
 	app.directive('productAbv', function() {
 		return {
 			restrict: 'E',
-			templateUrl: 'product-abv.html'
+			templateUrl: './html/product-abv.html'
 		};
 	});
 	
@@ -56,7 +56,7 @@
 	app.directive('productReviews', function() {
 		return {
 			restrict: 'E',
-			templateUrl: 'product-reviews.html'
+			templateUrl: './html/product-reviews.html'
 		};
 	});
 	
