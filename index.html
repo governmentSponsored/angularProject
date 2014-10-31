@@ -20,26 +20,14 @@ the "as store" defines store as an alias to the StoreController
 <body>
 	<h1>Angular, Parse, jQuery Beer app</h1>
 
-	<ul class="list-group" ng-controller="StoreController as store">
-		<li class="list-group-item" ng-repeat="product in store.products | orderBy:'price'">
-			<!--
-			replacing this with a custom directive...wee!
-			<h3 ng-include="'product-title.html'">			
-			</h3>
-			-->
+	<ul class="list-group" ng-controller="BeerController as store" ng-init="callParseBeerData()">
+		<li class="list-group-item" ng-repeat="product in beerData | orderBy:'price'">
 			<product-title></product-title>
 			<img class="img-rounded margin-all-5" ng-src="./img/{{product.images[0].thumb}}" />
 			<product-panels>
 			</product-panels>
 		</li>
 	</ul>
-	<div class="error hidden">
-		<h3>Parse did not save your stuff :(</h3>
-	</div>
-
-	<div class="success hidden">
-		<h3>Parse </h3>
-	</div>
 
 	<!-- local store of angular -->
 	<script type="text/javascript" src="./angular/angular.min.js"></script>
@@ -48,5 +36,7 @@ the "as store" defines store as an alias to the StoreController
 	<script type="text/javascript" src="./js/app.js"></script>
 	<script type="text/javascript" src="./js/products.js"></script>
 
+	<!-- parse test... -->
+	<script type="text/javascript" src="./js/parse-app.js"></script>
 </body>
 </html>

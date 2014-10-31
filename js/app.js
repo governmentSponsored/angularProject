@@ -59,111 +59,42 @@
 							 }, function(data) {
 								alert(data);
 							 })
-		}
-		
+		}		
 	});
-	
-	var beers = [
-		{
-			name: "Rising Sun",
-			price: 4.99,
-			description: "Sour, citrus, and inspired by Japan, the land of the rising sun!",
-			canPurchase: true,
-			cannotPurchase: false,
-			soldOut: false,
-			abv: 0.06,
-			images: [
-				{
-					full: "risingSun.jpg",
-					thumb: "risingSun_thumb.jpg"
-				},
-				{
-					percent50: "risingSun_50.jpg",
-					percent25: "risingSun_25.jpg"
-				}
-			],
-			reviews: [
-				{
-					stars: 4,
-					comment: "Really good job!",
-					author: "thanksforthespam@hotmail.com",
-					createdOn: 1413552886810
-				},
-				{
-					stars: 1,
-					comment: "Booooooo!",
-					author: "hahayoustink@hotmail.com",
-					createdOn: 1413552886810
-				}
-			]
-		},
-		{
-			name: "Silver Bullet",
-			price: 0.5,
-			description: "Mmmm, cold. Cause that's the important thing here.",
-			canPurchase: true,
-			cannotPurchase: false,
-			soldOut: false,
-			abv: 0.01,
-			images: [
-				{
-					full: "silverBullet.jpg",
-					thumb: "silverBullet_thumb.jpg",
-				}
-			],
-			reviews: [
-				{
-					stars: 5,
-					comment: "WOW WOW WOW!",
-					author: "ZOMGtoeverything@hotmail.com",
-					createdOn: 1413552886810
-				},
-				{
-					stars: 2,
-					comment: "Meh?",
-					author: "whateverdude@hotmail.com",
-					createdOn: 1413552886810
-				}
-			]
-		},
-		{
-			name: "Two Hearted",
-			price: 2.99,
-			description: "So darn good. Hoppy and delicious.",
-			canPurchase: true,
-			cannotPurchase: false,
-			soldOut: true,
-			abv: 0.07,
-			images: [
-				{
-					full: "twoHearted.jpg",
-					thumb: "twoHearted_thumb.jpg"
-				},
-				{
-					percent50: "twoHearted_50.jpg",
-					percent25: "twoHearted_25.jpg"
-				}
-			],
-			reviews: [
-				{
-					stars: 5,
-					comment: "Speachless!",
-					author: "ZOMGtoeverything@hotmail.com",
-					createdOn: 1413552886810
-				},
-				{
-					stars: 5,
-					comment: "Crying with joy.",
-					author: "5stars4life@hotmail.com",
-					createdOn: 1413552886810
-				},
-				{
-					stars: 5,
-					comment: "I can die happy now",
-					author: "5stars2you@hotmail.com",
-					createdOn: 1413552886810
-				}
-			]
-		}			
-	];
+
+	//get the list of beers for the interface
+	app.service('BeerService', function($http, $q){
+		 
+		this.beersFromParse = function() {
+			var deferred = $q.defer();
+			var baseUrl = 'https://api.parse.com/1/classes/Beer?';
+			
+			$http({method : 'GET',
+				   url : baseUrl, 
+				   headers: { 'X-Parse-Application-Id':'WfjtyO2ov01ie5KPiSbOaAvOzBpessMB8iervPEi', 'X-Parse-REST-API-Key':'Gc8NJ6LtoyZ7JBXbT6GYKUABWcXFIltFti7qxhqm'}
+				 })
+				.success(function(data, status) {
+					deferred.resolve(data);
+				})
+				.error(function(data, status) {
+					deferred.reject('There was an error');
+				})
+				
+			return deferred.promise;
+		}
+	 
+	});
+
+	app.controller('BeerController', function($scope, BeerService) {
+		$scope.beerData = [];
+		
+		$scope.callParseBeerData = function() {
+			BeerService.beersFromParse()
+							 .then(function(data) {
+								$scope.beerData = data.results;
+							 }, function(data) {
+								alert(data);
+							 })
+		}		
+	});
 })();
