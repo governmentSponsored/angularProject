@@ -63,6 +63,7 @@
 				this.review = {};
 				var Review = Parse.Object.extend("Review");
 				
+				//queries parse for each beer
 				$scope.callParseData = function(beerType) {
 					BrewReviewService.brewReviewFromParse(beerType)
 									 .then(function(data) {
@@ -153,6 +154,7 @@
 	 
 	});
 
+	//consume the BeerService service so that the controller can interact with the view
 	app.controller('BeerController', function($scope, BeerService) {
 		$scope.beerData = [];
 		
@@ -163,6 +165,29 @@
 							 }, function(data) {
 								alert(data);
 							 })
-		}		
+		}
+
+		$scope.addBeer = function() {
+			var Beer = Parse.Object.extend("Beer"),
+			beerObject = new Review();
+			beerObject.save({
+				name: name,
+				price: price,
+				description: description,
+				canPurchase: canPurchase,
+				soldOut: soldOut,
+				abv: abv,
+				images: images //woof, need to work on upload picture functionality as well
+			}, {
+				success: function(object) {
+				//refreshes the list of reviews to include this new review
+				//$scope.callParseData(beer);
+				console.log('saved!');
+				},
+				error: function(model, error) {
+					console.log('not saved!');
+				}
+			}); 
+		}
 	});
 })();

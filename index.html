@@ -3,7 +3,7 @@
 <html ng-app="store">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Angular, Parse, jQuery Beer app</title>
+<title>Angular + Parse Beer app</title>
 <!-- local store of bootstrap -->
 <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css" />
 <!-- my css style sheet -->
@@ -18,7 +18,7 @@ refers to the StoreController in app.js
 the "as store" defines store as an alias to the StoreController
 -->
 <body>
-	<h1>Angular, Parse, jQuery Beer app</h1>
+	<h1>Angular + Parse Beer app</h1>
 
 	<ul class="list-group" ng-controller="BeerController as store" ng-init="callParseBeerData()">
 		<li class="list-group-item" ng-repeat="product in beerData | orderBy:'price'">
