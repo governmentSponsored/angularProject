@@ -15,6 +15,7 @@
 		};
 	});
 	
+	//panel functionality (click on abv, review or description will bring up respective tab)
 	app.directive('productPanels', function() {
 		return {
 			restrict: 'E',
@@ -63,12 +64,12 @@
 				var Review = Parse.Object.extend("Review");
 				
 				$scope.callParseData = function(beerType) {
-				BrewReviewService.brewReviewFromParse(beerType)
-								 .then(function(data) {
-									$scope.parseData = data.results;
-								 }, function(data) {
-									alert(data);
-								 })	
+					BrewReviewService.brewReviewFromParse(beerType)
+									 .then(function(data) {
+										$scope.parseData = data.results;
+									 }, function(data) {
+										alert(data);
+									 })	
 				}
 				
 				//appends review w/date to the corresponding beer
@@ -86,7 +87,7 @@
 						beer: beer
 					  }, {
 					  success: function(object) {
-						//$scope.parseData.push(reviewObject);
+						//refreshes the list of reviews to include this new review
 						$scope.callParseData(beer);
 						console.log('saved!');
 					  },
@@ -104,7 +105,7 @@
 		};
 	});
 	
-	//service method instead of factory. seems to be more straightforward.
+	//service method to make http requests for beer reviews
 	app.service('BrewReviewService', function($http, $q){
 		 
 		this.brewReviewFromParse = function(beerType) {
@@ -128,16 +129,6 @@
 		}
 	 
 	});
-	
-	function prettyDateFormat(d) {
-		var m_names = new Array("Jan", "Feb", "Mar", 
-			"Apr", "May", "Jun", "Jul", "Aug", "Sep", 
-			"Oct", "Nov", "Dec");
-			var curr_date = d.getDate();
-			var curr_month = m_names[d.getMonth()];
-			var curr_year = d.getFullYear();
-			return curr_month + ' ' + curr_date + ", " + curr_year;
-	}
 
 	//get the list of beers for the interface
 	app.service('BeerService', function($http, $q){
@@ -174,51 +165,4 @@
 							 })
 		}		
 	});
-	
-	//adds new reviews and clears the form once review is added
-/*	app.controller("ReviewController", function($scope) {
-		this.review = {};
-		var Review = Parse.Object.extend("Review");
-		
-		//appends review w/date to the corresponding beer
-		this.addReview = function(product) {
-			var author = this.review.author,
-			stars = this.review.stars,
-			comment = this.review.comment,
-			beer = product.name,
-
-			//jQuery hack to update the beer reviews. Need to find Angular way of doing this.
-			//basically clone existing element, inject new values and then append to parent
-			//apending happens in success function below
-			el = $('[id="' + beer + '"]'), 
-			lastEl = el.last(),
-		    clone = lastEl.clone();
-
-		    clone.find('.reviewStars').attr('class','rating' + stars).addClass('reviewStars rating');
-		    clone.find('.reviewComment').text(comment);
-		    clone.find('.reviewAuthor').text(author);
-
-		    var reviewObject = new Review();
-		      reviewObject.save({
-		      	author: author,
-		      	stars: stars,
-		      	comment: comment,
-		      	beer: beer
-		      }, {
-		      success: function(object) {
-		      	clone.find('.reviewDate').text(prettyDateFormat(reviewObject.createdAt));
-		      	//lastEl.parent().append(clone);
-				$scope.parseData.push(reviewObject);
-		      	console.log('saved!');
-		      },
-		      error: function(model, error) {
-		        console.log('not saved!');
-		      }
-		    }); 
-			
-			//clears values in the form and cleans it up
-			this.review = {};
-			$scope.reviewForm.$setPristine();
-		};
-	});*/
 })();
