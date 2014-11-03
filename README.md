@@ -4,7 +4,7 @@ Just download to your local machine or remote host and everything should run jus
 
 Technologies Used:
 ==============
-* Parse REST API & JavaScript
-* ~~jQuery~~ removed to make sole use of AngularJS
 * AngularJS
+* Parse REST API & JavaScript
 * Bootstrap
+* ~~jQuery~~ removed to make sole use of AngularJS
