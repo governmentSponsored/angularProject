@@ -131,7 +131,7 @@
 	 
 	});
 
-	//get the list of beers for the interface
+	//get the list of beers for the view
 	app.service('BeerService', function($http, $q){
 		 
 		this.beersFromParse = function() {
