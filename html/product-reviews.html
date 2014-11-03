@@ -1,7 +1,7 @@
 <h4>Reviews</h4>
 <!-- repeat through all the reviews -->
-<div ng-controller="BrewReviewController" ng-init="callParseData(product.name)">
-<blockquote class="bq1" id="{{product.name}}" ng-repeat="review in parseData">
+<div ng-init="callParseData(product.name)">
+<blockquote class="bq1" id="{{product.name}}" ng-repeat="review in parseData | orderBy:'createdAt'">
 	<div class="reviewStars rating{{review.stars}} rating"><br />
 	</div>
 	<p class="reviewComment">{{review.comment}}</p>
@@ -14,14 +14,13 @@ the product that gets passed into the ng-submit function is defined in the ng-re
 we're also making sure form is valid before submittion with the reviewForm.$valid
 before calling the addReview() function
 -->
-<form name="reviewForm" ng-controller="ReviewController as reviewCtrl" 
-	ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+<form name="reviewForm" ng-submit="reviewForm.$valid && addReview(product)" novalidate>
 	<blockquote>
 		<!-- here's some two-way data binding -->
 		<strong>Your Review Preview!</strong> <br />
-		<b>Stars: </b>{{reviewCtrl.review.stars}}<br />
-		{{reviewCtrl.review.comment}}
-		<cite class="clearfix" >by: {{reviewCtrl.review.author}}</cite>
+		<b>Stars: </b>{{review.stars}}<br />
+		{{review.comment}}
+		<cite class="clearfix" >by: {{review.author}}</cite>
 	</blockquote>
 	<div id="inputs" class="all-reviews">
 		<h1><small>Tell us what you think!</small></h1>
@@ -31,19 +30,19 @@ before calling the addReview() function
 		validation based off of input type
 		-->
 		<select class="form-control" ng-options="stars for stars in [5,4,3,2,1]" 
-				title="Stars" ng-model="reviewCtrl.review.stars" required>
+				title="Stars" ng-model="review.stars" required>
 			<option value="">Rate the Product</option>
 		</select>
 		<div class="form-group">
 			<label for="comment">Review: </label>
-			<textarea class="form-control" id="comment" ng-model="reviewCtrl.review.comment" name="comment" required></textarea>
+			<textarea class="form-control" id="comment" ng-model="review.comment" name="comment" required></textarea>
 		</div>
 		<div class="form-group">
 			<label for="author">By: </label>
-			<input class="form-control" id="author" name="author" type="email" ng-model="reviewCtrl.review.author" required />
+			<input class="form-control" id="author" name="author" type="email" ng-model="review.author" required />
 		</div>
 		<div id="formValidationMsg">review is {{reviewForm.$valid}}</div>
-		<input type="hidden" class="beerName" name="beerName" value={{product.name}} id="beerName" ng-model="reviewCtrl.review.beerName" />
+		<input type="hidden" class="beerName" name="beerName" value={{product.name}} id="beerName" ng-model="review.beerName" />
 		<input class="btn btn-default" type="submit" value="Submit"/>
 	</div>
 </form>
