@@ -2,7 +2,7 @@
 (function() {
 	//now that we've removed product related functionality, we need to tell this app variable 
 	//that it has a dependency in store-products
-	var app = angular.module('store',['products']);
+	var app = angular.module('store',['products','upload']);
 	
 	//using the filter from @jeffjohnson9046 from the percent-filter.js
 	// This filter makes the assumption that the input will be in decimal form (i.e. 17% is 0.17).
