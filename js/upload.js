@@ -22,7 +22,27 @@
 	app.directive('uploadParseForm', function() {
 		return {
 			restrict: 'E',
-			templateUrl: './html/upload-parse-form.html'
+			templateUrl: 'html/upload-parse-form.html'
 		};
 	});
+
+	app.controller('ExampleController', ['$scope', function($scope) {
+	    $scope.master = {};
+
+	    $scope.update = function(user) {
+	        $scope.master = angular.copy(user);
+	        console.log($scope.master);
+	    };
+
+	    $scope.setFiles = function(element) {
+		    $scope.$apply(function($scope) {
+		     	console.log('files:', element.files);
+		      	// Turn the FileList object into an Array
+		        $scope.files = []
+		        for (var i = 0; i < element.files.length; i++) {
+		          $scope.files.push(element.files[i])
+		        }
+		    });
+	    };
+    }]);
 })();
