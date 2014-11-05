@@ -12,7 +12,7 @@
 			templateUrl: './html/upload-form.html',
 			controller: function($scope, FileUploader) {
 				$scope.uploader = new FileUploader({
-					url: './angular/file-upload/simple/upload.php'
+					url: './angular/server-file-upload/upload.php'
 				});
 			},
 			controllerAs: 'uploadForm'
