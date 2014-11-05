@@ -1,5 +1,17 @@
-<form novalidate ng-controller="ExampleController">
-	<input type="text" name="uploadthing" ng-model="user.upload" />
-	<input type="file" ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" />
-	<button ng-click="update(user)">upload</button>
-</form>
+<div ng-controller="UploadController ">
+	<form>
+        <!--input type="file" ng-file-select="onFileSelect($files)" onchange="angular.element(this).scope().setFiles(this)"-->
+		<input type="text" ng-model="beer.name" />
+		<button ng-hide="!files.length" ng-click="parseBeerSave(beer,files)">upload</button>
+		<input type="file" ng-file-select="onFileSelect($files)" multiple>
+		<ul>
+			<li ng-repeat="file in files">
+			{{file.name}} - {{file.size/1024/1024 | number:2}} MB<br />
+			<b>Preview:</b><br />
+			<img ng-src="{{file.imageSrc}}" />
+			</li>
+		</ul>
+	</form>
+	<!--b>Progress:</b>
+	<progress value="{{progress}}"></progress-->
+</div>
