@@ -3,12 +3,11 @@
         <!--input type="file" ng-file-select="onFileSelect($files)" onchange="angular.element(this).scope().setFiles(this)"-->
 		<input type="text" ng-model="beer.name" />
 		<button ng-hide="!files.length" ng-click="parseBeerSave(beer,files)">upload</button>
-		<input type="file" ng-file-select="onFileSelect($files)" multiple>
-		<ul>
-			<li ng-repeat="file in files">
-			{{file.name}} - {{file.size/1024/1024 | number:2}} MB<br />
-			<b>Preview:</b><br />
-			<img ng-src="{{file.imageSrc}}" />
+		<input type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*">
+		<ul class="no-bullet">
+			<li class="no-bullet-item" ng-repeat="file in files" >
+			<img class="img-rounded margin-all-5 thumbnail" ng-src="{{file.imageSrc}}" />
+			<span class="subtitle">{{file.name}} - {{file.size/1024/1024 | number:2}} MB</span>
 			</li>
 		</ul>
 	</form>

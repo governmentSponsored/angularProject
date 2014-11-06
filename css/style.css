@@ -21,11 +21,12 @@
 .hidden {
 	display: none;
 }
-
 .list-group-item {
-	width: 30%;
+	width: 24%;
 	float: left;
-	margin-left: 10px;
+	min-height: 385px;
+	margin: 5px;
+	overflow: auto;
 	border-radius: 5px;
 }
 
@@ -83,6 +84,19 @@ div.rating {
 /***** End rating styling, inspired by yelp *****/
 
 /***** Uploader Styles *****/
+.thumbnail {
+	height: 124px;
+	width: 124px;
+}
+.subtitle {
+	font-size: 80%;
+}
+.no-bullet {
+	list-style-type: none;
+}
+.no-bullet-item {
+	float: left;
+}
 .my-drop-zone { 
 	border: dotted 3px lightgray; 
 }

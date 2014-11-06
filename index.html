@@ -21,24 +21,25 @@ the "as store" defines store as an alias to the StoreController
 	<h1>Angular & Parse Beer app</h1>
 
 	<ul class="list-group" ng-controller="BeerController as store" ng-init="callParseBeerData()">
+		
+		<li class="list-group-item" id="form-list-item">
+			<h3>Add New Beer</h3>
+			<upload-parse-form>
+			</upload-parse-form>
+		</li>
+		
 		<li class="list-group-item" ng-repeat="product in beerData | orderBy:'price'">
 			<product-title></product-title>
 			<img class="img-rounded margin-all-5" ng-src="./img/{{product.images[0].thumb}}" />
 			<product-panels>
 			</product-panels>
 		</li>
-		<li class="list-group-item" id="form-list-item">
+		<!--li class="list-group-item" id="form-list-item">
 			<h3>Add New Beer</h3>
 			<h4>Server Side Upload</h4>
 			<upload-form>
 			</upload-form>
-		</li>
-		<li class="list-group-item" id="form-list-item">
-			<h3>Add New Beer</h3>
-			<h4>Parse Upload</h4>
-			<upload-parse-form>
-			</upload-parse-form>
-		</li>
+		</li-->
 	</ul>
 
 	<!-- local store of angular -->
