@@ -1,20 +1,21 @@
 <div ng-controller="UploadController ">
-	<form>
+	<form name="newBeerForm" id="newBeerFormId">
         <!--input type="file" ng-file-select="onFileSelect($files)" onchange="angular.element(this).scope().setFiles(this)"-->
 		<div class="form-group">
-			<input class="form-control" type="text" ng-model="name" name="beer.name" placeholder="Name" required />
+			<input class="form-control" type="text" ng-model="beer.name" name="beer.name" placeholder="Name" required />
 		</div>
 		<div class="form-group">
-			<input class="form-control" type="number" ng-model="price" name="beer.price" placeholder="Price" required/>
+			<input class="form-control" type="number" name="beer.price" ng-model="beer.price" placeholder="Price" required/>
 		</div>
 		<div class="form-group">
-			<input class="form-control" type="number" ng-model="abv" name="beer.abv" placeholder="Alcohol by Volume" required/>
+			<input class="form-control" type="number" ng-model="beer.abv" name="beer.abv" placeholder="Alcohol by Volume" required/>
 		</div>
 		<div class="form-group">
-			<textarea class="form-control" ng-model="description" name="beer.description" placeholder="Tastes like a warm summer breeze" required></textarea>
+			<textarea class="form-control" ng-model="beer.description" name="beer.description" placeholder="Tastes like a warm summer breeze" required></textarea>
 		</div>
 		<button ng-hide="!files.length" ng-click="parseBeerSave(beer,files)">upload</button>
-		<input class="custom-file-input" type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*">
+		<input class="custom-file-input" ng-model="beer.picz" type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*">
+		<!--input class="custom-file-input" type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*"-->
 		<ul class="no-bullet">
 			<li class="no-bullet-item" ng-repeat="file in files" >
 				<img class="img-rounded margin-all-5 thumbnail" ng-src="{{file.imageSrc}}" />

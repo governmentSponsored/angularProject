@@ -167,28 +167,5 @@
 								alert(data);
 							 })
 		}
-
-		$scope.addBeer = function() {
-			var Beer = Parse.Object.extend("Beer"),
-			beerObject = new Review();
-			beerObject.save({
-				name: name,
-				price: price,
-				description: description,
-				canPurchase: canPurchase,
-				soldOut: soldOut,
-				abv: abv,
-				images: images //woof, need to work on upload picture functionality as well
-			}, {
-				success: function(object) {
-				//refreshes the list of reviews to include this new review
-				//$scope.callParseData(beer);
-				console.log('saved!');
-				},
-				error: function(model, error) {
-					console.log('not saved!');
-				}
-			}); 
-		}
 	});
 })();

@@ -25,7 +25,7 @@
 		};
 	});
 
-	app.controller('UploadController', function ($scope, fileReader, $q, $http) {
+	app.controller('UploadController', function ($scope, fileReader, $q, $http, $filter) {
 		console.log(fileReader)
 		$scope.getFile = function (theFile) {
 			$scope.progress = 0;
@@ -48,11 +48,13 @@
 			Parse.initialize('WfjtyO2ov01ie5KPiSbOaAvOzBpessMB8iervPEi', 'ihjA6JyiHQ7LHLmPfKCwBRyU2vIRegnJ4m3YvWwu');
 
 			//loop over every file in from the file input (since it's multiple, but it'd work for single select)
-			for(var a=0; a<theFiles.length; a++) {
+			//for(var a=0; a<theFiles.length; a++) {
+			for(var a=0; a<1; a++) {
 				currentFile = theFiles[a];;
 
 				//need to declare these variables here so they can be referenced in the $.ajax call
 				var beer = beer;
+				this.beer = {};
 				var fullUrl = 'https://api.parse.com/1/files/' + currentFile.name;
 				$.ajax({
 					type: "POST",
@@ -68,13 +70,17 @@
 
 					//here we pass the uploaded file url (data.url) over to a parse class
 					success: function(data) {
-						var ParseFile = Parse.Object.extend("Files");
-						var parseFile = new ParseFile();
-						parseFile.save({
-							beerName: beer.name,
-							pic: data.url
+						var ParseBeer = Parse.Object.extend("Beer");
+						var beerFile = new ParseBeer();
+						beerFile.save({
+							name: beer.name,
+							price: beer.price,
+							description: beer.description,
+							abv: beer.abv,
+							picture: data.url
 						}, {
 							success: function(object) {
+								$scope.callParseBeerData();
 								console.log('yay! added to parse');
 							},
 							error: function(model, error) {
@@ -88,6 +94,15 @@
 					  console.log(obj.error);
 					}
 				});
+				//clear the form fields
+				this.beer = {};
+				$("#newBeerFormId")[0].reset(); //need this because can't find angular way to clear file uploads
+				
+				//remove warnings
+				$scope.newBeerForm.$setPristine();
+				
+				//remove pretty pictures
+				$scope.files = [];
 			}
 		};
 	 

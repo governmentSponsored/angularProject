@@ -1,7 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- makes reference to app.js so it calls the app variable -->
-<html ng-app="store">
+<html ng-app="store" id="ng-app" xmlns:ng="http://angularjs.org">
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<!--[if lte IE 7]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
+    <![endif]-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Angular & Parse Beer app</title>
 <!-- local store of bootstrap -->
@@ -30,7 +34,7 @@ the "as store" defines store as an alias to the StoreController
 		
 		<li class="list-group-item" ng-repeat="product in beerData | orderBy:'price'">
 			<product-title></product-title>
-			<img class="img-rounded margin-all-5" ng-src="./img/{{product.images[0].thumb}}" />
+			<img class="img-rounded margin-all-5 thumbnail" ng-src="{{product.picture}}" />
 			<product-panels>
 			</product-panels>
 		</li>
