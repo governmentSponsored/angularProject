@@ -7,4 +7,5 @@ Technologies Used:
 * AngularJS
 * Parse REST API & JavaScript
 * Bootstrap
-* ~~jQuery~~ removed to make sole use of AngularJS
+* jQuery
+* * Used in just one line until can find angular workaround.
