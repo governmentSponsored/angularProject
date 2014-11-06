@@ -23,7 +23,8 @@
 }
 .list-group-item {
 	width: 24%;
-	float: left;
+	display: inline-block;
+	vertical-align: top;
 	min-height: 385px;
 	margin: 5px;
 	overflow: auto;
