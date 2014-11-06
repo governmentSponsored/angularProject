@@ -8,4 +8,4 @@ Technologies Used:
 * Parse REST API & JavaScript
 * Bootstrap
 * jQuery
-* * Used in just one line until can find angular workaround.
+    * Used in just one line until can find angular workaround.
