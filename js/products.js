@@ -61,6 +61,7 @@
 			controller: function($scope, BrewReviewService) {
 				$scope.parseData = [];
 				this.review = {};
+				Parse.initialize('WfjtyO2ov01ie5KPiSbOaAvOzBpessMB8iervPEi', 'ihjA6JyiHQ7LHLmPfKCwBRyU2vIRegnJ4m3YvWwu');
 				var Review = Parse.Object.extend("Review");
 				
 				//queries parse for each beer

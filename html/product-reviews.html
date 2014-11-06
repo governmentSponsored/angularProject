@@ -15,12 +15,13 @@ we're also making sure form is valid before submittion with the reviewForm.$vali
 before calling the addReview() function
 -->
 <form name="reviewForm" ng-submit="reviewForm.$valid && addReview(product)" novalidate>
-	<blockquote>
+	<blockquote class="bq1" id="{{product.name}}" ng-hide="reviewForm.$pristine">
 		<!-- here's some two-way data binding -->
-		<strong>Your Review Preview!</strong> <br />
-		<b>Stars: </b>{{review.stars}}<br />
-		{{review.comment}}
-		<cite class="clearfix" >by: {{review.author}}</cite>
+		<strong>Your Review!</strong> <br />
+		<div class="reviewStars rating{{review.stars}} rating"><br />
+		</div>
+		<p class="reviewComment">{{review.comment}}</p>
+		<p class="after"><a class="reviewAuthor">{{review.author}}</a></p>
 	</blockquote>
 	<div id="inputs" class="all-reviews">
 		<h1><small>Tell us what you think!</small></h1>

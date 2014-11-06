@@ -27,7 +27,6 @@
 	vertical-align: top;
 	min-height: 385px;
 	margin: 5px;
-	overflow: auto;
 	border-radius: 5px;
 }
 
@@ -84,7 +83,7 @@ div.rating {
 }
 /***** End rating styling, inspired by yelp *****/
 
-/***** Uploader Styles *****/
+/***** New Beer (including uploader) Styles *****/
 .thumbnail {
 	height: 124px;
 	width: 124px;
@@ -98,6 +97,7 @@ div.rating {
 .no-bullet-item {
 	float: left;
 }
+
 .my-drop-zone { 
 	border: dotted 3px lightgray; 
 }

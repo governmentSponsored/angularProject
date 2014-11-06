@@ -8,14 +8,17 @@
 			<input class="form-control" type="number" ng-model="price" name="beer.price" placeholder="Price" required/>
 		</div>
 		<div class="form-group">
+			<input class="form-control" type="number" ng-model="abv" name="beer.abv" placeholder="Alcohol by Volume" required/>
+		</div>
+		<div class="form-group">
 			<textarea class="form-control" ng-model="description" name="beer.description" placeholder="Tastes like a warm summer breeze" required></textarea>
 		</div>
 		<button ng-hide="!files.length" ng-click="parseBeerSave(beer,files)">upload</button>
-		<input type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*">
+		<input class="custom-file-input" type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*">
 		<ul class="no-bullet">
 			<li class="no-bullet-item" ng-repeat="file in files" >
-			<img class="img-rounded margin-all-5 thumbnail" ng-src="{{file.imageSrc}}" />
-			<span class="subtitle">{{file.name}} - {{file.size/1024/1024 | number:2}} MB</span>
+				<img class="img-rounded margin-all-5 thumbnail" ng-src="{{file.imageSrc}}" />
+				<span class="subtitle">{{file.name}} - {{file.size/1024/1024 | number:2}} MB</span>	
 			</li>
 		</ul>
 	</form>
