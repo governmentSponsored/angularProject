@@ -97,6 +97,7 @@ div.rating {
 	list-style-type: none;
 }
 .no-bullet-item {
+	margin-top: 15px;
 	float: left;
 }
 .sub-item {
@@ -114,6 +115,14 @@ div.rating {
 	float: left;
 	margin: 0 5px;
 }
+.custom-file-input {
+	width: 100%;
+}
+.submitButton {
+	margin-top: 15px;
+	width: 100%;
+}
+
 .my-drop-zone { 
 	border: dotted 3px lightgray; 
 }
@@ -126,4 +135,7 @@ div.rating {
 }
 html, body { 
 	height: 100%; 
+}
+p {
+	word-wrap: break-word;
 }

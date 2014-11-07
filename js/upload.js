@@ -97,6 +97,7 @@
 				//clear the form fields
 				this.beer = {};
 				$("#newBeerFormId")[0].reset(); //need this because can't find angular way to clear file uploads
+				console.log($("#newBeerFormId")[0]);
 				
 				//remove warnings
 				$scope.newBeerForm.$setPristine();
@@ -107,18 +108,12 @@
 		};
 		
 		$scope.checkFieldStatus = function(beer) {
-			$scope.fieldStatus = false;
-			if(beer) {
-				if(beer.name || beer.price || beer.abv || beer.description) {
-					$scope.fieldStatus = true;
-				} else {
-					$scope.fieldStatus = false;
-				}
-			} else if($scope.files && $scope.files.length > 0) {
+			if(beer.name || beer.price || beer.abv || beer.description) {
 				$scope.fieldStatus = true;
-			}else {
+			} else {
 				$scope.fieldStatus = false;
 			}
+			console.log(beer);
 		};
 	 
 	})
@@ -142,8 +137,8 @@
             	} else {
 					$scope.getFile($scope.file);
 					$scope.files.push($scope.file);
+					$scope.fieldStatus = true;
             	}            	
-
 			}
 			console.log($scope.files);
 		  })

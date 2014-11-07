@@ -37,6 +37,29 @@
 		};
 	});
 	
+	//panel functionality for new beer form(click on abv or description will bring up respective tab)
+	//this is needed because otherwise the form goes kaput
+	app.directive('newBeerProductPanels', function() {
+		return {
+			restrict: 'E',
+			templateUrl: './html/new-beer-product-panels.html',
+			controller: function() { //bring in controller functionality from below
+				this.tab = 1;
+		
+				//sets the tab value
+				this.selectTab = function(setTab) {
+					this.tab = setTab;
+				};
+				
+				//returns true/false based on whether tab is selected or not
+				this.isSelected = function(checkTab) {
+					return this.tab === checkTab;
+				};
+			},
+			controllerAs: 'panel' //specify alias of controller
+		};
+	});
+	
 	//description panel
 	app.directive('productDescription', function() {
 		return {

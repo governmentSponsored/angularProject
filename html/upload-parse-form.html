@@ -1,17 +1,17 @@
 <!--input type="file" ng-file-select="onFileSelect($files)" onchange="angular.element(this).scope().setFiles(this)"-->
 <div class="form-group">
-	<input class="form-control" type="text" ng-change="checkFieldStatus(beer)" ng-model="beer.name" name="beer.name" placeholder="Name" required />
+	<input class="form-control" type="text" ng-change="checkFieldStatus(beer)" ng-model="beer.name" name="name" placeholder="Name" required />
 </div>
 <div class="form-group">
-	<input class="form-control" type="number" name="beer.price" ng-model="beer.price" placeholder="Price" required/>
+	<input class="form-control" type="number" ng-change="checkFieldStatus(beer)" name="price" ng-model="beer.price" placeholder="Price" required />
 </div>
 <div class="form-group">
-	<input class="form-control" type="number" ng-model="beer.abv" name="beer.abv" placeholder="Alcohol by Volume (10% = .10)" required/>
+	<input class="form-control" type="number" ng-change="checkFieldStatus(beer)" ng-model="beer.abv" name="abv" placeholder="Alcohol by Volume (10% = .10)" required />
 </div>
 <div class="form-group">
-	<textarea class="form-control" ng-model="beer.description" name="beer.description" placeholder="Tastes like a warm summer breeze" required></textarea>
+	<textarea class="form-control" ng-change="checkFieldStatus(beer)" ng-model="beer.description" name="description" placeholder="Tastes like a warm summer breeze" required ></textarea>
 </div>
-<input class="custom-file-input" ng-model="beer.picz" type="file" ng-file-select="onFileSelect($files)" accept="image/*">
+<input class="custom-file-input btn btn-default" ng-change="checkFieldStatus(beer)" ng-model="beer.picz" type="file" name="picture" ng-file-select="onFileSelect($files)" accept="image/*">
 <!--input class="custom-file-input" type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*"-->
 <ul class="no-bullet">
 	<li class="no-bullet-item" ng-repeat="file in files" >
@@ -19,4 +19,6 @@
 		<span class="subtitle">{{file.name}} - {{file.size/1024/1024 | number:2}} MB</span>	
 	</li>
 </ul>
-<input class="btn btn-default" ng-click="parseBeerSave(beer,files)" type="submit" value="Save Beer"/>
+<div class="form-group">
+	<input class="btn submitButton" ng-class="{ 'btn-primary' : newBeerForm.$valid, 'btn-default' : !newBeerForm.$valid }" type="submit" value="Save Beer"/>
+</div>
