@@ -22,7 +22,7 @@
 	display: none;
 }
 .list-group-item {
-	width: 24%;
+	width: 30%;
 	display: inline-block;
 	vertical-align: top;
 	min-height: 385px;
@@ -87,6 +87,8 @@ div.rating {
 .thumbnail {
 	max-height: 200px;
 	max-width: 200px;
+	margin: auto;
+	margin-bottom: 10px;
 }
 .subtitle {
 	font-size: 80%;

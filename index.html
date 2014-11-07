@@ -26,18 +26,33 @@ the "as store" defines store as an alias to the StoreController
 
 	<ul class="list-group" ng-controller="BeerController as store" ng-init="callParseBeerData()">
 		
-		<li class="list-group-item" id="form-list-item">
-			<h3>Add New Beer</h3>
-			<upload-parse-form>
-			</upload-parse-form>
-		</li>
+		<div ng-controller="UploadController ">
+			<form name="newBeerForm" id="newBeerFormId">
+				<li class="list-group-item" id="form-list-item">
+					<h3>Add New Beer</h3>
+					<upload-parse-form>
+					</upload-parse-form>
+				</li>
 		
-		<li class="list-group-item" ng-repeat="product in beerData | orderBy:'price'">
-			<product-title></product-title>
-			<img class="img-rounded margin-all-5 thumbnail" ng-src="{{product.picture}}" />
+				<li class="list-group-item" id="form-list-item-preview" ng-hide="newBeerForm.$pristine">
+					<new-beer-preview>
+					</new-beer-preview>
+				</li>
+			</form>
+		<!--b>Progress:</b>
+		<progress value="{{progress}}"></progress-->
+		</div>
+		<li class="list-group-item" ng-repeat="product in beerData | orderBy:'createdAt':true">
+			<product-title>
+			</product-title>
+			
+			<product-picture>
+			</product-picture>
+			
 			<product-panels>
 			</product-panels>
 		</li>
+		
 		<!--li class="list-group-item" id="form-list-item">
 			<h3>Add New Beer</h3>
 			<h4>Server Side Upload</h4>

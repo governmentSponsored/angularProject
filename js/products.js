@@ -53,6 +53,22 @@
 		};
 	});
 	
+	//picture
+	app.directive('productPicture', function() {
+		return {
+			restrict: 'E',
+			templateUrl: './html/product-picture.html'
+		};
+	});
+	
+	//new beer preview box
+	app.directive('newBeerPreview', function() {
+		return {
+			restrict: 'E',
+			templateUrl: './html/new-beer-preview.html'
+		};
+	});
+	
 	//reviews panel
 	app.directive('productReviews', function() {
 		return {

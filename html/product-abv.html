@@ -1,2 +1,3 @@
 <h4>Alcohol by Volume (ABV)</h4>
-<p> {{product.abv | percentage:2}} </p>
+<p ng-hide="!product.abv"> {{product.abv | percentage:2}} </p>
+<p ng-hide="!beer.abv"> {{beer.abv | percentage:2}} </p>
