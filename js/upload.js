@@ -105,6 +105,21 @@
 				$scope.files = [];
 			}
 		};
+		
+		$scope.checkFieldStatus = function(beer) {
+			$scope.fieldStatus = false;
+			if(beer) {
+				if(beer.name || beer.price || beer.abv || beer.description) {
+					$scope.fieldStatus = true;
+				} else {
+					$scope.fieldStatus = false;
+				}
+			} else if($scope.files && $scope.files.length > 0) {
+				$scope.fieldStatus = true;
+			}else {
+				$scope.fieldStatus = false;
+			}
+		};
 	 
 	})
 

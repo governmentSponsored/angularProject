@@ -26,15 +26,18 @@ the "as store" defines store as an alias to the StoreController
 
 	<ul class="list-group" ng-controller="BeerController as store" ng-init="callParseBeerData()">
 		
-			<form name="newBeerForm" ng-class="{ 'onlyNewBeerForm': !newBeerForm.$pristine, 'newBeerFormAndPreview' : newBeerForm.$pristine }" ng-controller="UploadController">
-				<li class="list-group-item" ng-class="{ 'sub-item': !newBeerForm.$pristine, 'main-item' : newBeerForm.$pristine}" id="form-list-item">
+			<form name="newBeerForm" 
+				ng-class="{ 'onlyNewBeerForm': !newBeerForm.$pristine && fieldStatus, 'newBeerFormAndPreview' : !fieldStatus }" 
+				ng-controller="UploadController" 
+				ng-submit="newBeerForm.$valid"
+				novalidate>
+				<li class="list-group-item" ng-class="{ 'sub-item': !newBeerForm.$pristine && fieldStatus, 'main-item' : !fieldStatus}" id="form-list-item">
 					<h3>Add New Beer</h3>
-					{{newBeerForm.$pristine}}
 					<upload-parse-form>
 					</upload-parse-form>
 				</li>
 		
-				<li class="list-group-item sub-item" id="form-list-item-preview" ng-hide="newBeerForm.$pristine">
+				<li class="list-group-item sub-item" id="form-list-item-preview" ng-hide="!fieldStatus">
 					<new-beer-preview>
 					</new-beer-preview>
 				</li>
