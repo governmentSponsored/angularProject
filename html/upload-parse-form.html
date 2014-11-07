@@ -11,7 +11,6 @@
 <div class="form-group">
 	<textarea class="form-control" ng-model="beer.description" name="beer.description" placeholder="Tastes like a warm summer breeze" required></textarea>
 </div>
-<button ng-hide="!files.length" ng-click="parseBeerSave(beer,files)">upload</button>
 <input class="custom-file-input" ng-model="beer.picz" type="file" ng-file-select="onFileSelect($files)" accept="image/*">
 <!--input class="custom-file-input" type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*"-->
 <ul class="no-bullet">
@@ -20,3 +19,4 @@
 		<span class="subtitle">{{file.name}} - {{file.size/1024/1024 | number:2}} MB</span>	
 	</li>
 </ul>
+<button class="btn btn-default" ng-hide="!newBeerForm.$valid && !files.length" ng-click="parseBeerSave(beer,files)">Save Beer</button>

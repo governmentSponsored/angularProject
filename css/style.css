@@ -99,7 +99,21 @@ div.rating {
 .no-bullet-item {
 	float: left;
 }
-
+.sub-item {
+	width: 48%;
+}
+.main-item {
+	width: 98%;
+}
+.onlyNewBeerForm {
+	width: 62%;
+	float: left;
+}
+.newBeerFormAndPreview {
+	width: 30%;
+	float: left;
+	margin: 0 5px;
+}
 .my-drop-zone { 
 	border: dotted 3px lightgray; 
 }
