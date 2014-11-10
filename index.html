@@ -31,7 +31,7 @@ the "as store" defines store as an alias to the StoreController
 				ng-controller="UploadController" 
 				ng-submit="newBeerForm.$valid && parseBeerSave(beer,files)"
 				novalidate>
-				<li class="list-group-item" ng-class="{ 'sub-item': fieldStatus || !newBeerForm.$pristine, 'main-item' : !fieldStatus}" id="form-list-item">
+				<li class="list-group-item" ng-class="{ 'sub-item': fieldStatus || !newBeerForm.$pristine, 'main-item' : !fieldStatus || newBeerForm.$pristine}" id="form-list-item">
 					<h3>Add New Beer</h3>
 					<upload-parse-form>
 					</upload-parse-form>
