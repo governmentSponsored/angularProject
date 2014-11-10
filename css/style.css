@@ -81,6 +81,18 @@ div.rating {
 .rating1 {
 	background-position: -3px -539px;
 }
+.rating0 {
+	background-position: -3px -514px;
+}
+.averageRating {
+	display: inline-block;
+	margin-right: 2px;
+}
+.averageNumber {
+	font-size: 110%;
+	display: inline-block;
+	vertical-align: text-bottom;
+}
 /***** End rating styling, inspired by yelp *****/
 
 /***** New Beer (including uploader) Styles *****/

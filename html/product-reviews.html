@@ -1,15 +1,16 @@
 <!-- hides form for new form preview -->
 <div class="hideable" ng-hide="!product.name">
 	<h4>Reviews</h4>
+	<div class="averageRating rating{{averageReview[0]}} rating"></div><span class="averageNumber"> {{averageReview[1]}} reviews</span>
 	<!-- repeat through all the reviews -->
 	<div ng-init="callParseData(product.name)">
-	<blockquote class="bq1" id="{{product.name}}" ng-repeat="review in parseData | orderBy:'createdAt'">
-		<div class="reviewStars rating{{review.stars}} rating"><br />
-		</div>
-		<p class="reviewComment">{{review.comment}}</p>
-		<p class="after"><a class="reviewAuthor">{{review.author}}</a></p>
-		<p>on <span class="reviewDate">{{review.createdAt | date}}</span></p>
-	</blockquote>
+		<blockquote class="bq1" id="{{product.name}}" ng-repeat="review in parseData | orderBy:'createdAt'">
+			<div class="reviewStars rating{{review.stars}} rating"><br />
+			</div>
+			<p class="reviewComment">{{review.comment}}</p>
+			<p class="after"><a class="reviewAuthor">{{review.author}}</a></p>
+			<p>on <span class="reviewDate">{{review.createdAt | date}}</span></p>
+		</blockquote>
 	</div>
 	<!-- 
 	the product that gets passed into the ng-submit function is defined in the ng-repeat in the first li
@@ -44,9 +45,8 @@
 				<label for="author">By: </label>
 				<input class="form-control" id="author" name="author" type="email" ng-model="review.author" required />
 			</div>
-			<div id="formValidationMsg">review is {{reviewForm.$valid}}</div>
 			<input type="hidden" class="beerName" name="beerName" value={{product.name}} id="beerName" ng-model="review.beerName" />
-			<input class="btn btn-default" type="submit" value="Submit"/>
+			<input class="btn custom-file-input" ng-class="{ 'btn-default' : !reviewForm.$valid, 'btn-primary' : reviewForm.$valid }"type="submit" value="Submit"/>
 		</div>
 	</form>
 </div>

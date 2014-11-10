@@ -108,6 +108,14 @@
 					BrewReviewService.brewReviewFromParse(beerType)
 									 .then(function(data) {
 										$scope.parseData = data.results;
+										$scope.averageReview = [];
+										var review = 0,
+										len = data.results.length;
+										for(var a=0; a<len; a++) {
+											review = review + data.results[a].stars;
+										}
+										$scope.averageReview = len === 0 && review === 0 ? [0,0] : [Math.round(review/len), len];
+										console.log($scope.averageReview)
 									 }, function(data) {
 										alert(data);
 									 })	
