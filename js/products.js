@@ -80,7 +80,13 @@
 	app.directive('productPicture', function() {
 		return {
 			restrict: 'E',
-			templateUrl: './html/product-picture.html'
+			templateUrl: './html/product-picture.html',
+			controller: function($scope) {
+				$scope.changePicture = function(product) {
+					console.log(product);
+					
+				}
+			}
 		};
 	});
 	
@@ -108,6 +114,8 @@
 					BrewReviewService.brewReviewFromParse(beerType)
 									 .then(function(data) {
 										$scope.parseData = data.results;
+
+										//get review average and number of reviews
 										$scope.averageReview = [];
 										var review = 0,
 										len = data.results.length;
