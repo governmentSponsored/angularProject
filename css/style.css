@@ -110,7 +110,6 @@ div.rating {
 }
 .no-bullet-item {
 	margin-top: 15px;
-	float: left;
 }
 .sub-item {
 	width: 48%;%;
@@ -129,22 +128,43 @@ div.rating {
 }
 .custom-file-input {
 	width: 100%;
+	text-align: left;
 }
 .submitButton {
 	margin-top: 15px;
 	width: 100%;
 }
 
-.my-drop-zone { 
-	border: dotted 3px lightgray; 
+.inner-addon { 
+    position: relative; 
 }
-/* Default class applied to drop zones on over */
-.nv-file-over { 
-	border: dotted 3px red; 
-} 
-.another-file-over-class { 
-	border: dotted 3px green; 
+
+/* style icon */
+.submit-icon {
+	padding-top: 25px !important;
 }
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+  z-index: 1;
+}
+/* align icon */
+.left-addon .glyphicon  { 
+	left:  0px;
+}
+.right-addon .glyphicon { 
+	right: 0px;
+}
+
+/* add padding  */
+.left-addon input , .left-addon textarea { 
+	padding-left:  30px; 
+}
+.right-addon input, .right-addon textarea { 
+	padding-right: 30px; 
+}
+
 html, body { 
 	height: 100%; 
 }
