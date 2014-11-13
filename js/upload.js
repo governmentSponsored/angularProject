@@ -26,7 +26,6 @@
 	});
 
 	app.controller('UploadController', function ($scope, fileReader, $q, $http, $filter) {
-		console.log(fileReader)
 		$scope.getFile = function (theFile) {
 			$scope.progress = 0;
 			fileReader.readAsDataUrl(theFile, $scope)
@@ -104,16 +103,24 @@
 				
 				//remove pretty pictures
 				$scope.files = [];
+
+				//change fieldStatus to false
+				$scope.fieldStatus = false;
 			}
 		};
 		
 		$scope.checkFieldStatus = function(beer) {
-			if(beer.name || beer.price || beer.abv || beer.description) {
+			if(beer.files) { //check if the user clicked file upload first
 				$scope.fieldStatus = true;
+				$scope.pictureStatus = true;
 			} else {
-				$scope.fieldStatus = false;
+				if(beer.name || beer.price || beer.abv || beer.description) {
+					$scope.fieldStatus = true;
+				} else {
+					$scope.fieldStatus = false;
+				}
 			}
-			console.log(beer);
+			//console.log($scope.fieldStatus);
 		};
 	 
 	})
@@ -140,7 +147,7 @@
 					$scope.fieldStatus = true;
             	}            	
 			}
-			console.log($scope.files);
+			//console.log($scope.files);
 		  })
 		  
 		}

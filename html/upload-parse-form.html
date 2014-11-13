@@ -17,7 +17,7 @@
 </div>
 <div class="form-group inner-addon left-addon">
 	<i class="glyphicon glyphicon-cloud-upload"></i>
-	<input class="custom-file-input btn btn-default inner-addon left-addon" ng-change="checkFieldStatus(beer)" ng-model="beer.picz" type="file" name="picture" ng-file-select="onFileSelect($files)" accept="image/*">
+	<input class="custom-file-input btn btn-default inner-addon left-addon" ng-model="beer.picture" type="file" name="picture" ng-file-select="onFileSelect($files)" accept="image/*" onchange="angular.element(this).scope().checkFieldStatus(this)">
 </div>
 <!--input class="custom-file-input" type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*"-->
 <ul class="no-bullet">
@@ -27,6 +27,6 @@
 	</li>
 </ul>
 <div class="form-group inner-addon left-addon">
-	<i class="glyphicon submit-icon" ng-class="{'glyphicon-floppy-save' : newBeerForm.$valid, 'glyphicon-floppy-remove' : !newBeerForm.$valid}"></i>
-	<input class="btn submitButton" ng-class="{ 'btn-primary' : newBeerForm.$valid, 'btn-default' : !newBeerForm.$valid }" type="submit" value="Save Beer"/>
+	<i class="glyphicon submit-icon" ng-class="{'glyphicon-floppy-save' : newBeerForm.$valid && pictureStatus, 'glyphicon-floppy-remove' : (!newBeerForm.$valid  || !pictureStatus)}"></i>
+	<input class="btn submitButton" ng-class="{ 'btn-primary' : newBeerForm.$valid && pictureStatus, 'btn-default' : (!newBeerForm.$valid  || !pictureStatus)}" type="submit" value="Save Beer"/>
 </div>

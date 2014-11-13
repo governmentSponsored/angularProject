@@ -23,30 +23,32 @@ the "as store" defines store as an alias to the StoreController
 -->
 <body>
 	<h1>Angular & Parse Beer app</h1>
-
-	<ul class="list-group" ng-controller="BeerController as store" ng-init="callParseBeerData()">
-		
-			<form name="newBeerForm" id="newBeerFormId"
-				ng-class="{ 'onlyNewBeerForm': !newBeerForm.$pristine && fieldStatus, 'newBeerFormAndPreview' : !fieldStatus }" 
-				ng-controller="UploadController" 
-				ng-submit="newBeerForm.$valid && parseBeerSave(beer,files)"
-				novalidate>
-				<li class="list-group-item" ng-class="{ 'sub-item': fieldStatus || !newBeerForm.$pristine, 'main-item' : !fieldStatus || newBeerForm.$pristine}" id="form-list-item">
+	
+	<!--setting ul as masonry container for fluid layout-->
+	<ul id="container" class="masonry list-group"
+	ng-controller="BeerController as store" ng-init="callParseBeerData()">
+		<li class="list-group-item item" ng-controller="UploadController" ng-class="{'sixtyPercent' : fieldStatus}" id="form-list-item">
+			<form name="newBeerForm" id="newBeerFormId"	ng-submit="newBeerForm.$valid && pictureStatus && parseBeerSave(beer,files)"	novalidate>
+				<div ng-class="{'fiftyPercent' : fieldStatus}">
 					<h3>Add New Beer</h3>
+					
 					<upload-parse-form>
 					</upload-parse-form>
-					{{newBeerForm.$pristine}}
-					{{!fieldStatus}}
-				</li>
-		
-				<li class="list-group-item sub-item" id="form-list-item-preview" ng-show="fieldStatus && !newBeerForm.$pristine">
+					
+					pristine && fieldStatus: {{fieldStatus}}
+				</div>
+				<div class="fiftyPercent" ng-show="fieldStatus">
 					<new-beer-preview>
 					</new-beer-preview>
-				</li>
+				</div>
+
 			</form>
+		</li>
+		
 		<!--b>Progress:</b>
 		<progress value="{{progress}}"></progress-->
-		<li class="list-group-item" ng-repeat="product in beerData | orderBy:'createdAt':true">
+		<li class="item list-group-item" ng-repeat="product in beerData | orderBy:'createdAt':true">
+		<!--li class="list-group-item" ng-repeat="product in beerData | orderBy:'createdAt':true"-->
 			<product-title>
 			</product-title>
 			
@@ -73,5 +75,13 @@ the "as store" defines store as an alias to the StoreController
 	<script type="text/javascript" src="./js/products.js"></script>
 	<script type="text/javascript" src="./js/upload.js"></script>
 	<script type="text/javascript" src="./angular/server-file-upload/angular-file-upload.min.js"></script>
+	
+	<!--load up masonry library & customization-->
+	<script src="http://masonry.desandro.com/masonry.pkgd.min.js"></script>
+	
+	<!--imagesLoaded, used to make display fluid with loading images, which throws off normal masonry-->
+	<script src="http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
+	
+	<script src="./js/masonry.js"></script>
 </body>
 </html>

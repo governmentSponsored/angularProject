@@ -80,13 +80,7 @@
 	app.directive('productPicture', function() {
 		return {
 			restrict: 'E',
-			templateUrl: './html/product-picture.html',
-			controller: function($scope) {
-				$scope.changePicture = function(product) {
-					console.log(product);
-					
-				}
-			}
+			templateUrl: './html/product-picture.html'
 		};
 	});
 	
@@ -123,7 +117,6 @@
 											review = review + data.results[a].stars;
 										}
 										$scope.averageReview = len === 0 && review === 0 ? [0,0] : [Math.round(review/len), len];
-										console.log($scope.averageReview)
 									 }, function(data) {
 										alert(data);
 									 })	
