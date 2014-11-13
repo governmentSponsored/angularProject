@@ -110,6 +110,7 @@
 		};
 		
 		$scope.checkFieldStatus = function(beer) {
+			
 			if(beer.files) { //check if the user clicked file upload first
 				$scope.fieldStatus = true;
 				$scope.pictureStatus = true;
@@ -121,6 +122,7 @@
 				}
 			}
 			//console.log($scope.fieldStatus);
+			addMasonry($(this));
 		};
 	 
 	})

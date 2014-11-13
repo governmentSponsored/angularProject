@@ -27,16 +27,16 @@ the "as store" defines store as an alias to the StoreController
 	<!--setting ul as masonry container for fluid layout-->
 	<ul id="container" class="masonry list-group"
 	ng-controller="BeerController as store" ng-init="callParseBeerData()">
-		<li class="list-group-item item" ng-controller="UploadController" ng-class="{'sixtyPercent' : fieldStatus}" id="form-list-item">
+		<li class="list-group-item item" ng-controller="UploadController" id="form-list-item">
 			<form name="newBeerForm" id="newBeerFormId"	ng-submit="newBeerForm.$valid && pictureStatus && parseBeerSave(beer,files)"	novalidate>
-				<h2 ng-class="{'centered' : fieldStatus}">Add New Beer</h2>
-				<div ng-class="{'fiftyPercent' : fieldStatus}">
+				<h2>Add Your Beer</h2>
+				<div>
 					
 					<upload-parse-form>
 					</upload-parse-form>
 					
 				</div>
-				<div class="fiftyPercent" ng-show="fieldStatus">
+				<div class="oneHundredPercent" ng-show="fieldStatus">
 					<new-beer-preview>
 					</new-beer-preview>
 				</div>
