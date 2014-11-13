@@ -29,8 +29,8 @@ the "as store" defines store as an alias to the StoreController
 	ng-controller="BeerController as store" ng-init="callParseBeerData()">
 		<li class="list-group-item item" ng-controller="UploadController" ng-class="{'sixtyPercent' : fieldStatus}" id="form-list-item">
 			<form name="newBeerForm" id="newBeerFormId"	ng-submit="newBeerForm.$valid && pictureStatus && parseBeerSave(beer,files)"	novalidate>
+				<h2 ng-class="{'centered' : fieldStatus}">Add New Beer</h2>
 				<div ng-class="{'fiftyPercent' : fieldStatus}">
-					<h3>Add New Beer</h3>
 					
 					<upload-parse-form>
 					</upload-parse-form>

@@ -20,12 +20,14 @@
 	<input class="custom-file-input btn btn-default inner-addon left-addon" ng-model="beer.picture" type="file" name="picture" ng-file-select="onFileSelect($files)" accept="image/*" onchange="angular.element(this).scope().checkFieldStatus(this)">
 </div>
 <!--input class="custom-file-input" type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*"-->
+<!-- Commenting out this part because it doesn't feel necessary, but might want to use code like this later.
 <ul class="no-bullet">
 	<li class="no-bullet-item" ng-repeat="file in files" >
 		<img class="img-rounded margin-all-5 thumbnail" ng-src="{{file.imageSrc}}" />
 		<span class="subtitle">{{file.name}} - {{file.size/1024/1024 | number:2}} MB</span>	
 	</li>
 </ul>
+-->
 <div class="form-group inner-addon left-addon">
 	<i class="glyphicon submit-icon" ng-class="{'glyphicon-floppy-save' : newBeerForm.$valid && pictureStatus, 'glyphicon-floppy-remove' : (!newBeerForm.$valid  || !pictureStatus)}"></i>
 	<input class="btn submitButton" ng-class="{ 'btn-primary' : newBeerForm.$valid && pictureStatus, 'btn-default' : (!newBeerForm.$valid  || !pictureStatus)}" type="submit" value="Save Beer"/>

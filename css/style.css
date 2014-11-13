@@ -113,8 +113,11 @@ div.rating {
 	text-align: left;
 }
 .submitButton {
-	margin-top: 15px;
+	/*margin-top: 15px;*/
 	width: 100%;
+}
+.centered {
+	text-align: center;
 }
 p {
 	word-wrap: break-word;
@@ -125,7 +128,7 @@ p {
     position: relative; 
 }
 .submit-icon {
-	padding-top: 25px !important;
+	padding-top: 10px !important;
 }
 .inner-addon .glyphicon {
   position: absolute;
@@ -175,6 +178,6 @@ p {
 }
 .fiftyPercent {
 	float: left;
-	width: 45%;
+	width: 48%;
 	margin: 0 5px;
 }
