@@ -95,6 +95,8 @@ div.rating {
 /***** New Beer Form Styles *****/
 .thumbnail {
 	width: 48%;
+	max-width: 150px;
+	max-height: 200px;
 	margin: auto;
 	margin-bottom: 10px;
 }
