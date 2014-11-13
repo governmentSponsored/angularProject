@@ -22,7 +22,6 @@
 	display: none;
 }
 .list-group-item {
-	width: 30%;
 	display: inline-block;
 	vertical-align: top;
 	min-height: 385px;
@@ -171,3 +170,48 @@ html, body {
 p {
 	word-wrap: break-word;
 }
+
+/********* Masonry ***********/
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.masonry {
+  max-width: 100%;
+}
+
+/* clearfix */
+.masonry:after {
+  content: '';
+  display: inline-block;
+  clear: both;
+}
+
+.masonry .item {
+  width:  30%;
+  float: left;
+}
+/* yes the numbers aren't EXACTLY the same as what the name is
+	but the title is better than sixtyPointSixPercent. */
+.item.sixtyPercent {
+	width: 60.6%;
+}
+.oneHundredPercent {
+	width: 100%;
+}
+.fiftyPercent {
+	float: left;
+	width: 45%;
+	margin: 0 5px;
+}
+
+/*.item.w2 { 
+	float: left;
+	width: 30%;
+	margin-right: 10px;
+}
+#newBeerFormId .list-group-item {
+	width: 100%;
+}*/
