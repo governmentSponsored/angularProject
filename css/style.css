@@ -84,11 +84,12 @@ div.rating {
 .averageRating {
 	display: inline-block;
 	margin-right: 2px;
+	margin-bottom: 10px;
 }
 .averageNumber {
 	font-size: 110%;
 	display: inline-block;
-	vertical-align: text-bottom;
+	vertical-align: top;
 }
 
 /***** New Beer Form Styles *****/
