@@ -29,7 +29,7 @@
 	border-radius: 5px;
 }
 
-/***** Start blockquote styling from http://jsfiddle.net/_jro/RXa65/ ******/
+/***** Blockquote styling from http://jsfiddle.net/_jro/RXa65/ ******/
 
 .bq1 { 
 	padding-left: 16px; 
@@ -55,9 +55,7 @@ p.after a:hover {
 	text-decoration: underline; 
 }
 
-/***** End blockquote styling from http://jsfiddle.net/_jro/RXa65/ ******/
-
-/***** Start rating styling, inspired by yelp *****/
+/***** Rating styling, inspired by yelp *****/
 div.rating {
 	overflow: hidden;
 	position: relative;
@@ -92,9 +90,8 @@ div.rating {
 	display: inline-block;
 	vertical-align: text-bottom;
 }
-/***** End rating styling, inspired by yelp *****/
 
-/***** New Beer (including uploader) Styles *****/
+/***** New Beer Form Styles *****/
 .thumbnail {
 	max-height: 200px;
 	max-width: 200px;
@@ -110,21 +107,6 @@ div.rating {
 .no-bullet-item {
 	margin-top: 15px;
 }
-.sub-item {
-	width: 48%;%;
-}
-.main-item {
-	width: 98%;
-}
-.onlyNewBeerForm {
-	width: 62%;
-	float: left;
-}
-.newBeerFormAndPreview {
-	width: 30%;
-	float: left;
-	margin: 0 5px;
-}
 .custom-file-input {
 	width: 100%;
 	text-align: left;
@@ -133,12 +115,14 @@ div.rating {
 	margin-top: 15px;
 	width: 100%;
 }
+p {
+	word-wrap: break-word;
+}
 
+/***** Glyphicon styling *****/
 .inner-addon { 
     position: relative; 
 }
-
-/* style icon */
 .submit-icon {
 	padding-top: 25px !important;
 }
@@ -148,15 +132,12 @@ div.rating {
   pointer-events: none;
   z-index: 1;
 }
-/* align icon */
 .left-addon .glyphicon  { 
 	left:  0px;
 }
 .right-addon .glyphicon { 
 	right: 0px;
 }
-
-/* add padding  */
 .left-addon input , .left-addon textarea { 
 	padding-left:  30px; 
 }
@@ -164,14 +145,7 @@ div.rating {
 	padding-right: 30px; 
 }
 
-html, body { 
-	height: 100%; 
-}
-p {
-	word-wrap: break-word;
-}
-
-/********* Masonry ***********/
+/***** Masonry/Fluid look *****/
 * {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -198,20 +172,8 @@ p {
 .item.sixtyPercent {
 	width: 60.6%;
 }
-.oneHundredPercent {
-	width: 100%;
-}
 .fiftyPercent {
 	float: left;
 	width: 45%;
 	margin: 0 5px;
 }
-
-/*.item.w2 { 
-	float: left;
-	width: 30%;
-	margin-right: 10px;
-}
-#newBeerFormId .list-group-item {
-	width: 100%;
-}*/
