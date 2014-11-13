@@ -171,6 +171,10 @@ p {
   width:  30%;
   float: left;
 }
+
+#form-list-item {
+	position: relative !important;
+}
 /* yes the numbers aren't EXACTLY the same as what the name is
 	but the title is better than sixtyPointSixPercent. */
 .item.sixtyPercent {

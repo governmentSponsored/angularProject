@@ -1,8 +1,11 @@
 //Query(window).on('load', function() {
-$(document).load(function() {
+$(document).load(addMasonry());
+function addMasonry() {
 	var container = document.querySelector('.masonry');
-	var msnry = new Masonry(container, {
-			// options
-	  		itemSelector: '.item'
-	});	
-});
+	var msnry;
+	// initialize Masonry after all images have loaded
+	imagesLoaded( container, function() {
+	  msnry = new Masonry( container );
+	});
+	console.log('addMasonry called');
+}

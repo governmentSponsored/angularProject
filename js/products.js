@@ -26,6 +26,7 @@
 				//sets the tab value
 				this.selectTab = function(setTab) {
 					this.tab = setTab;
+					addMasonry();
 				};
 				
 				//returns true/false based on whether tab is selected or not
