@@ -122,7 +122,7 @@
 				}
 			}
 			//console.log($scope.fieldStatus);
-			addMasonry($(this));
+			addMasonry();
 		};
 	 
 	})

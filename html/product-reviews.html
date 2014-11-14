@@ -1,11 +1,11 @@
 <!-- hides form for new form preview -->
 <div class="hideable" ng-hide="!product.name">
 	<h4>Reviews</h4>
-	<div class="averageRating rating{{averageReview[0]}} rating"></div><span class="averageNumber"> {{averageReview[1]}} reviews</span>
+	<div class="averageRating rating{{averageReview[0]}} ratingDefault"></div><span class="averageNumber"> {{averageReview[1]}} reviews</span>
 	<!-- repeat through all the reviews -->
 	<div ng-init="callParseData(product.name)">
 		<blockquote class="bq1" id="{{product.name}}" ng-repeat="review in parseData | orderBy:'createdAt'">
-			<div class="reviewStars rating{{review.stars}} rating"><br />
+			<div class="reviewStars rating{{review.stars}} ratingDefault"><br />
 			</div>
 			<p class="reviewComment">{{review.comment}}</p>
 			<p class="after"><a class="reviewAuthor">{{review.author}}</a></p>
@@ -21,7 +21,7 @@
 		<blockquote class="bq1" id="{{product.name}}" ng-hide="reviewForm.$pristine">
 			<!-- here's some two-way data binding -->
 			<strong>Your Review!</strong> <br />
-			<div class="reviewStars rating{{review.stars}} rating"><br />
+			<div class="reviewStars rating{{review.stars}} ratingDefault"><br />
 			</div>
 			<p class="reviewComment">{{review.comment}}</p>
 			<p class="after"><a class="reviewAuthor">{{review.author}}</a></p>
@@ -34,19 +34,22 @@
 			validation based off of input type
 			-->
 			<select class="form-control" ng-options="stars for stars in [5,4,3,2,1]" 
-					title="Stars" ng-model="review.stars" required>
+					ng-change="fixLayout()" title="Stars" ng-model="review.stars" required>
 				<option value="">Rate the Product</option>
 			</select>
 			<div class="form-group">
 				<label for="comment">Review: </label>
-				<textarea class="form-control" id="comment" ng-model="review.comment" name="comment" required></textarea>
+				<textarea class="form-control" id="comment" ng-model="review.comment" ng-change="fixLayout()" name="comment" required></textarea>
 			</div>
 			<div class="form-group">
 				<label for="author">By: </label>
-				<input class="form-control" id="author" name="author" type="email" ng-model="review.author" required />
+				<input class="form-control" id="author" name="author" type="email" ng-model="review.author" ng-change="fixLayout()" required />
 			</div>
 			<input type="hidden" class="beerName" name="beerName" value={{product.name}} id="beerName" ng-model="review.beerName" />
-			<input class="btn custom-file-input" ng-class="{ 'btn-default' : !reviewForm.$valid, 'btn-primary' : reviewForm.$valid }"type="submit" value="Submit"/>
+			<div class="form-group inner-addon left-addon">
+				<i class="glyphicon submit-icon" ng-class="{'glyphicon-floppy-save' : reviewForm.$valid, 'glyphicon-floppy-remove' : !reviewForm.$valid}"></i>
+				<input class="btn custom-file-input" ng-class="{ 'btn-default' : !reviewForm.$valid, 'btn-primary' : reviewForm.$valid }"type="submit" value="Submit"/>
+			</div>
 		</div>
 	</form>
 </div>

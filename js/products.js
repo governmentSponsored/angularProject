@@ -151,6 +151,11 @@
 					this.review = {};
 					$scope.reviewForm.$setPristine();
 				}
+				
+				//
+				$scope.fixLayout = function() {
+					addMasonry();
+				}
 			},
 			controllerAs: 'BrewReviewCtrl'
 		};
