@@ -149,6 +149,10 @@ p {
 .right-addon input, .right-addon textarea { 
 	padding-right: 30px; 
 }
+span.glyphicon.glyphicon-heart-empty.five-left-right {
+	margin-right: 5px;
+	margin-left: -5px;
+}
 
 /***** Masonry/Fluid look *****/
 * {
@@ -185,4 +189,10 @@ p {
 	float: left;
 	width: 48%;
 	margin: 0 5px;
+}
+.oneHundredPercent {
+	width: 100%;
+}
+.textLeft {
+	text-align: left !important;
 }

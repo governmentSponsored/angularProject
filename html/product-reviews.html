@@ -33,17 +33,34 @@
 			required needed for fields to be validated
 			validation based off of input type
 			-->
-			<select class="form-control" ng-options="stars for stars in [5,4,3,2,1]" 
-					ng-change="fixLayout()" title="Stars" ng-model="review.stars" required>
-				<option value="">Rate the Product</option>
-			</select>
-			<div class="form-group">
-				<label for="comment">Review: </label>
-				<textarea class="form-control" id="comment" ng-model="review.comment" ng-change="fixLayout()" name="comment" required></textarea>
+			<!--div class="form-group">
+				<select class="form-control" ng-options="stars for stars in [5,4,3,2,1]" 
+						ng-change="fixLayout()" title="Stars" ng-model="review.stars" required>
+					<option value="">Rate the Product</option>
+				</select>
+			</div-->
+			<div class="dropdown btn-group form-group oneHundredPercent">
+				<a class="dropdown-toggle btn btn-default oneHundredPercent textLeft" data-toggle="dropdown" href="#">
+					<span class="glyphicon glyphicon-sort five-left-right"></span>
+					Rate the Beer
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">5</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">1</a></li>
+				</ul>
 			</div>
-			<div class="form-group">
-				<label for="author">By: </label>
-				<input class="form-control" id="author" name="author" type="email" ng-model="review.author" ng-change="fixLayout()" required />
+			<div class="form-group inner-addon left-addon">
+				<!--label for="comment">Review: </label-->
+				<i class="glyphicon glyphicon-comment"></i>
+				<textarea class="form-control" id="comment" ng-model="review.comment" ng-change="fixLayout()" name="comment" placeholder="Best thing I've ever tasted!" required></textarea>
+			</div>
+			<div class="form-group inner-addon left-addon">
+				<i class="glyphicon glyphicon-envelope"></i>
+				<input class="form-control" id="author" name="author" type="email" ng-model="review.author" ng-change="fixLayout()" placeholder="my.email@provider.com" required />
 			</div>
 			<input type="hidden" class="beerName" name="beerName" value={{product.name}} id="beerName" ng-model="review.beerName" />
 			<div class="form-group inner-addon left-addon">
