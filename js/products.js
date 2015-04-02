@@ -101,7 +101,7 @@
 			controller: function($scope, BrewReviewService) {
 				$scope.parseData = [];
 				this.review = {};
-				Parse.initialize('WfjtyO2ov01ie5KPiSbOaAvOzBpessMB8iervPEi', 'ihjA6JyiHQ7LHLmPfKCwBRyU2vIRegnJ4m3YvWwu');
+				Parse.initialize(parseAppId, parseClientKey);
 				var Review = Parse.Object.extend("Review");
 				
 				//queries parse for each beer
@@ -172,7 +172,7 @@
 			
 			$http({method : 'GET',
 				   url : fullUrl, 
-				   headers: { 'X-Parse-Application-Id':'WfjtyO2ov01ie5KPiSbOaAvOzBpessMB8iervPEi', 'X-Parse-REST-API-Key':'Gc8NJ6LtoyZ7JBXbT6GYKUABWcXFIltFti7qxhqm'}
+				   headers: { 'X-Parse-Application-Id': parseAppId, 'X-Parse-REST-API-Key': parseRestApiKey}
 				 })
 				.success(function(data, status) {
 					deferred.resolve(data);
@@ -195,7 +195,7 @@
 			
 			$http({method : 'GET',
 				   url : baseUrl, 
-				   headers: { 'X-Parse-Application-Id':'WfjtyO2ov01ie5KPiSbOaAvOzBpessMB8iervPEi', 'X-Parse-REST-API-Key':'Gc8NJ6LtoyZ7JBXbT6GYKUABWcXFIltFti7qxhqm'}
+				   headers: { 'X-Parse-Application-Id': parseAppId, 'X-Parse-REST-API-Key': parseRestApiKey}
 				 })
 				.success(function(data, status) {
 					deferred.resolve(data);
@@ -217,7 +217,6 @@
 			BeerService.beersFromParse()
 							 .then(function(data) {
 								$scope.beerData = data.results;
-								console.log('here I am');
 							 }, function(data) {
 								alert(data);
 							 }).finally(function() {

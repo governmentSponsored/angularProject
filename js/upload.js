@@ -44,7 +44,7 @@
 
 		$scope.parseBeerSave = function(beer,theFiles) {
 			var currentFile;
-			Parse.initialize('WfjtyO2ov01ie5KPiSbOaAvOzBpessMB8iervPEi', 'ihjA6JyiHQ7LHLmPfKCwBRyU2vIRegnJ4m3YvWwu');
+			Parse.initialize(parseAppId, parseClientKey);
 
 			//loop over every file in from the file input (since it's multiple, but it'd work for single select)
 			//for(var a=0; a<theFiles.length; a++) {
@@ -58,8 +58,8 @@
 				$.ajax({
 					type: "POST",
 					beforeSend: function(request) { //set headers, optional to have content type for the image upload
-					  request.setRequestHeader("X-Parse-Application-Id", 'WfjtyO2ov01ie5KPiSbOaAvOzBpessMB8iervPEi');
-					  request.setRequestHeader("X-Parse-REST-API-Key", 'Gc8NJ6LtoyZ7JBXbT6GYKUABWcXFIltFti7qxhqm');
+					  request.setRequestHeader("X-Parse-Application-Id", parseAppId);
+					  request.setRequestHeader("X-Parse-REST-API-Key", parseRestApiKey);
 					  request.setRequestHeader("Content-Type", currentFile.type);
 					},
 					url: fullUrl,
