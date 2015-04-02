@@ -8,5 +8,4 @@ function addMasonry() {
 	  msnry = new Masonry( container );
 	  msnry.layout();
 	});
-	console.log('hello');
 }
